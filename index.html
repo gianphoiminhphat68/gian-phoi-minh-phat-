@@ -111,7 +111,7 @@
             <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-10">
                     <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tất Cả Sản Phẩm & Dịch Vụ</h2>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tất Cả Sản Phẩm & Dịch Vụ Riêng Lẻ</h2>
                     <p class="text-slate-600 mt-2">Tìm kiếm nhanh hoặc chọn lọc danh mục sản phẩm bạn quan tâm.</p>
                 </div>
 
@@ -126,7 +126,7 @@
                         <button onclick="filterCategory('gianphoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Giàn Phơi</button>
                         <button onclick="filterCategory('cualuoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Cửa Lưới</button>
                         <button onclick="filterCategory('luoiantoan')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Lưới An Toàn</button>
-                        <button onclick="filterCategory('khac')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Khác</button>
+                        <button onclick="filterCategory('bat')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Bạt Che & Khác</button>
                     </div>
                 </div>
 
@@ -173,7 +173,7 @@
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900 mb-2">Gói Toàn Diện</h3>
                                 <div class="text-3xl font-black text-gold my-4">Giá xưởng tốt nhất</div>
-                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, cửa xếp lá nhôm nhựa đo đạc lắp đặt trọn gói tận nơi.</p>
+                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, bạt che nắng mưa đo đạc lắp đặt trọn gói tận nơi.</p>
                             </div>
                             <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
                         </div>
@@ -244,7 +244,7 @@
         </div>
     </div>
 
-    <!-- Toast Notification Popup (Hiệu ứng thông báo khi mua hàng) -->
+    <!-- Toast Notification Popup -->
     <div id="toast-notification" class="fixed top-24 right-6 z-50 hidden bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold flex items-center gap-3 toast-animate">
         <div class="w-8 h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold"><i class="fas fa-check"></i></div>
         <div>
@@ -303,13 +303,13 @@
         <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
     </footer>
 
-    <!-- Tawk.to Script (Tích hợp chat trực tuyến) -->
+    <!-- Tawk.to Script (Tích hợp chat trực tuyến chính thức) -->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default'; // Bạn có thể thay link widget Tawk.to của riêng bạn tại đây
+        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
@@ -330,160 +330,302 @@
             slides[currentSlide].style.opacity = '1';
         }, 4000);
 
+        // Danh sách sản phẩm chính xác theo yêu cầu phân tách từng mục riêng lẻ
         let defaultProducts = [
+            // --- 5 MỤC GIÀN PHƠI ĐIỆN TỬ ---
             {
                 id: 1, category: "gianphoi",
-                title: "1. Giàn Phơi Thông Minh Điện Tử",
+                title: "1. Giàn Phơi Thông Minh Điện Tử Tiêu Chuẩn",
                 price: "Liên hệ giá tốt nhất",
-                desc: "Dòng giàn phơi thông minh điều khiển từ xa cao cấp tích hợp đèn UV diệt khuẩn và quạt sấy.",
-                subFolders: ["Mẫu Điện Tử Điều Khiển Từ Xa Tiêu Chuẩn", "Mẫu Điện Tử Tích Hợp Đèn UV Diệt Khuẩn", "Mẫu Điện Tử Quạt Sấy Khô Quần Áo", "Mẫu Điện Tử Cảm Biến Tự Dừng Khi Gặp Vật Cản", "Mẫu Điện Tử Cao Cấp Nhôm Đúc Nguyên Khối"],
-                images: [
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
-                ]
+                desc: "Mẫu giàn phơi điện tử điều khiển từ xa tiêu chuẩn, vận hành êm ái và bền bỉ.",
+                subFolders: ["Điều Khiển Từ Xa Tần Số Cao", "Động Cơ Tubular Êm Ái", "Cáp Inox Chống Gỉ Sét"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
             },
             {
                 id: 2, category: "gianphoi",
-                title: "2. Giàn Phơi Quay Tay Gắn Trần",
-                price: "Từ 650.000đ - 1.500.000đ",
-                desc: "Hệ thống giàn phơi quay tay gắn trần với cơ cấu hãm vòng bi tự động nhẹ nhàng, bền bỉ.",
-                subFolders: ["Mẫu Quay Tay Inox 304 Hoàn Hảo", "Mẫu Quay Tay Hợp Kim Nhôm Bạc", "Mẫu Quay Tay Sơn Vàng Đồng Sang Trọng", "Mẫu Quay Tay Thanh Phơi Gỗ", "Mẫu Quay Tay Đơn Trục Nhẹ Nhàng"],
-                images: [
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
-                ]
+                title: "2. Giàn Phơi Điện Tử Tích Hợp Đèn UV Diệt Khuẩn",
+                price: "Liên hệ giá tốt nhất",
+                desc: "Tích hợp đèn UV cực tím kháng khuẩn, khử mùi hôi quần áo hiệu quả trong mùa mưa.",
+                subFolders: ["Đèn UV Khử Trùng Áo Quần", "Điều Khển Remote Thông Minh", "Khung Nhôm Hợp Kim Cao Cấp"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
             },
             {
                 id: 3, category: "gianphoi",
-                title: "3. Giàn Phơi Xếp Ngang Gắn Tường",
-                price: "Từ 850.000đ / bộ",
-                desc: "Thiết kế gắn tường kéo ra xếp vào thông minh, tối ưu diện tích cho sân phơi và lô gia nhỏ.",
-                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm Kéo Dài", "Mẫu Xếp Tường Inox 304 Chống Gỉ", "Mẫu Xếp Gắn Tường Khung Ziczac", "Mẫu Xếp Ngang Gọn Gàng Tiết Kiệm Không Gian", "Mẫu Xếp Tường Tải Trọng Lớn 50kg"],
-                images: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                ]
+                title: "3. Giàn Phơi Điện Tử Quạt Sấy Khô Quần Áo",
+                price: "Liên hệ giá tốt nhất",
+                desc: "Trang bị quạt sấy gió nóng giúp quần áo khô nhanh chóng vào những ngày ẩm ướt.",
+                subFolders: ["Quạt Sấy Gió Nóng Thông Minh", "Hẹn Giờ Sấy Tự Động", "Thiết Kế Sang Trọng Hiện Đại"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
             },
             {
-                id: 4, category: "cualuoi",
-                title: "4. Cửa Lưới Chống Muỗi Hệ Xếp",
+                id: 4, category: "gianphoi",
+                title: "4. Giàn Phơi Điện Tử Cảm Biến Tự Dừng Khi Gặp Vật Cản",
+                price: "Liên hệ giá tốt nhất",
+                desc: "Tích hợp cảm biến thông minh tự động dừng lại an toàn khi gặp vật cản phía dưới.",
+                subFolders: ["Cảm Biến Chống Va Chạm An Toàn", "Bảo Vệ Quá Tải Điện Áp", "Vận Hành Siêu Êm"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 5, category: "gianphoi",
+                title: "5. Giàn Phơi Điện Tử Cao Cấp Nhôm Đúc Nguyên Khối",
+                price: "Liên hệ giá tốt nhất",
+                desc: "Phiên bản cao cấp làm từ nhôm đúc nguyên khối siêu bền, chịu tải trọng phơi cực lớn.",
+                subFolders: ["Nhôm Đúc Nguyên Khối 100%", "Tải Trọng Phơi Lớn Trên 75kg", "Bảo Hành Chính Hãng 5 Năm"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+
+            // --- 13 MỤC GIÀN PHƠI QUAY TAY GẮN TRẦN ---
+            {
+                id: 6, category: "gianphoi",
+                title: "6. Giàn Phơi Quay Tay Inox 304 Hoàn Hảo",
+                price: "Từ 650.000đ",
+                desc: "Chất liệu inox 304 sáng bóng chống gỉ tuyệt đối, bền đẹp cùng thời gian.",
+                subFolders: ["Thanh Phơi Inox 304 Dày Dặn", "Bộ Tời Inox Nguyên Khối", "Hệ Thống Quay Nhẹ Nhàng"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 7, category: "gianphoi",
+                title: "7. Giàn Phơi Quay Tay Hợp Kim Nhôm Bạc",
+                price: "Từ 700.000đ",
+                desc: "Hợp kim nhôm sơn tĩnh điện màu bạc sang trọng, chống oxi hóa tốt.",
+                subFolders: ["Nhôm Sơn Tĩnh Điện Bạc", "Thanh Phơi Đục Lỗ Sẵn Định Vị", "Cáp Lụa Inox Không Rối"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 8, category: "gianphoi",
+                title: "8. Giàn Phơi Quay Tay Sơn Vàng Đồng Sang Trọng",
+                price: "Từ 850.000đ",
+                desc: "Màu vàng đồng cao cấp tạo điểm nhấn sang trọng cho ban công nhà bạn.",
+                subFolders: ["Màu Vàng Đồng Tân Cổ Điển", "Bộ Tời Quay Êm Chống Mài Mòn", "Độ Bền Cao"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 9, category: "gianphoi",
+                title: "9. Giàn Phơi Quay Tay Thanh Phơi Gỗ",
+                price: "Từ 900.000đ",
+                desc: "Thiết kế thanh phơi vân gỗ độc đáo, kết hợp hài hòa với nội thất nhà phố.",
+                subFolders: ["Thanh Phơi Vân Gỗ Thẩm Mỹ", "Chống Chịu Thời Tiết Tốt", "Phụ Kiện Đồng Bộ"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 10, category: "gianphoi",
+                title: "10. Giàn Phơi Quay Tay Đơn Trục Nhẹ Nhàng",
+                price: "Từ 650.000đ",
+                desc: "Cơ cấu đơn trục quay nhẹ, người già và trẻ nhỏ đều dễ dàng sử dụng.",
+                subFolders: ["Trục Quay Trợ Lực Thông Minh", "Nhẹ Nhàng Không Tốn Sức", "Gọn Gàng Tiện Lợi"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 11, category: "gianphoi",
+                title: "11. Giàn Phơi Quay Tay Hãm Phanh Tự Động Cao Cấp",
+                price: "Từ 950.000đ",
+                desc: "Hệ thống hãm phanh tự động vòng bi cao cấp, dừng chính xác mọi cao độ.",
+                subFolders: ["Phanh Hãm Tự Động An Toàn", "Không Cần Quay Khóa Cố Định", "Độ Bền Vượt Trội"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 12, category: "gianphoi",
+                title: "12. Giàn Phơi Quay Tay Nhôm Đúc Chịu Lực Tải Lớn",
+                price: "Từ 1.150.000đ",
+                desc: "Chuyên dụng cho gia đình đông người, phơi chăn ga gối nệm nặng thoải mái.",
+                subFolders: ["Bộ Tời Nhôm Đúc Liền Khối", "Chịu Tải Trọng Đến 60kg", "Cáp Inox Dày 1.8mm"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 13, category: "gianphoi",
+                title: "13. Giàn Phơi Quay Tay Ban Công Hẹp",
+                price: "Từ 750.000đ",
+                desc: "Thiết kế tối ưu riêng cho các căn hộ chung cư có ban công diện tích nhỏ hẹp.",
+                subFolders: ["Thay Đổi Kích Thước Theo Không Gian", "Gọn Gàng Tối Ưu", "Dễ Dàng Lắp Đặt"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 14, category: "gianphoi",
+                title: "14. Giàn Phơi Quay Tay Kèm 80 Móc Phơi Tiện Dụng",
+                price: "Từ 800.000đ",
+                desc: "Tặng kèm bộ 80 khuyên định vị chống bay quần áo và móc phơi chuyên dụng.",
+                subFolders: ["Tặng Kèm 80 Khuyên Định Vị", "Thanh Phơi Sẵn Lỗ Treo", "Chống Bay Đồ Hiệu Quả"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 15, category: "gianphoi",
+                title: "15. Giàn Phơi Quay Tay Dành Cho Căn Hộ Chung Cư",
+                price: "Từ 750.000đ",
+                desc: "Giải pháp phơi đồ quốc dân được hàng ngàn hộ gia đình chung cư tin dùng.",
+                subFolders: ["Thiết Kế Chuẩn Chung Cư", "Lắp Đặt Nhanh Trong 1 Giờ", "Bảo Hành Tận Nơi 3 Năm"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 16, category: "gianphoi",
+                title: "16. Giàn Phơi Quay Tay Khung Inox Dày 1.2mm",
+                price: "Từ 850.000đ",
+                desc: "Sử dụng khung bách và thanh phơi inox siêu dày 1.2mm chắc chắn tuyệt đối.",
+                subFolders: ["Inox Dày 1.2mm Cực Kỳ Chắc Chắn", "Chống Gỉ Sét 100%", "Tải Trọng Cao"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 17, category: "gianphoi",
+                title: "17. Giàn Phơi Quay Tay Thiết Kế Chống Rối Cáp",
+                price: "Từ 890.000đ",
+                desc: "Hệ thống dẫn hướng thông minh chống tuột cáp và rối cáp khi quay ngược chiều.",
+                subFolders: ["Hệ Thống Dẫn Hướng Chống Rối", "Trượt Cáp Êm Ái", "Độ Bền Cao"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 18, category: "gianphoi",
+                title: "18. Giàn Phơi Quay Tay Cao Cấp Nhập Khẩu",
+                price: "Từ 1.250.000đ",
+                desc: "Dòng sản phẩm nhập khẩu cao cấp nguyên bộ, thiết kế tinh xảo từng đường nét.",
+                subFolders: ["Nhập Khẩu Nguyên Bộ Cao Cấp", "Công Nghệ Châu Âu", "Bảo Hành Vàng 5 Năm"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+
+            // --- 6 MỤC GIÀN PHƠI XẾP NGANG ---
+            {
+                id: 19, category: "gianphoi",
+                title: "19. Giàn Phơi Xếp Ngang 3 Thanh Nhôm Kéo Dài",
+                price: "Từ 850.000đ",
+                desc: "Thiết kế 3 thanh nhôm kéo ra xếp vào thông minh, diện tích phơi đồ cực lớn.",
+                subFolders: ["3 Thanh Phơi Nhôm Dài 2 Mét", "Kéo Ra Xếp Vào Nhẹ Nhàng", "Tối Ưu Không Gian Sân Phơi"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 20, category: "gianphoi",
+                title: "20. Giàn Phơi Xếp Tường Inox 304 Chống Gỉ",
+                price: "Từ 950.000đ",
+                desc: "Khung gắn tường inox 304 toàn phần, chuyên dùng cho khu vực ngoài trời mưa nắng.",
+                subFolders: ["Inox 304 Chống Gỉ Sét 100%", "Độ Bền Thách Thức Thời Gian", "Khung Xếp Ziczac Chắc Chắn"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 21, category: "gianphoi",
+                title: "21. Giàn Phơi Xếp Gắn Tường Khung Ziczac",
+                price: "Từ 800.000đ",
+                desc: "Cơ cấu khung ziczac trợ lực giúp kéo ra thu vào vô cùng nhẹ nhàng.",
+                subFolders: ["Khung Ziczac Chịu Lực Tốt", "Gập Sát Tường Khi Không Dùng", "Tiết Kiệm Diện Tích Tuyệt Đối"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 22, category: "gianphoi",
+                title: "22. Giàn Phơi Xếp Ngang Gọn Gàng Tiết Kiệm Không Gian",
+                price: "Từ 780.000đ",
+                desc: "Thiết kế tối giản tinh tế dành cho ban công nhà phố và căn hộ diện tích nhỏ.",
+                subFolders: ["Thiết Kế Siêu Gọn Gàng", "Thẩm Mỹ Cao Cho Ban Công", "Lắp Đặt Nhanh Chóng"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 23, category: "gianphoi",
+                title: "23. Giàn Phơi Xếp Tường Tải Trọng Lớn 50kg",
+                price: "From 1.050.000đ",
+                desc: "Khung nhôm dày bản lớn chịu tải trọng phơi lên đến 50kg.",
+                subFolders: ["Tải Trọng Phơi 50kg", "Thanh Phơi Dày Chống Võng", "Độ Bền 10 Năm"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 24, category: "gianphoi",
+                title: "24. Giàn Phơi Xếp Ngang Tiêu Chuẩn Phổ Thông",
+                price: "Từ 750.000đ",
+                desc: "Mẫu giàn phơi xếp tường phổ thông kinh tế, đáp ứng tốt nhu cầu phơi cơ bản.",
+                subFolders: ["Giá Thành Tiết Kiệm", "Độ Bền Ổn Định", "Bảo Hành 2 Năm"],
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
+            },
+
+            // --- CỬA LƯỚI CHỐNG MUỖI (4 MỤC RIÊNG BIỆT) ---
+            {
+                id: 25, category: "cualuoi",
+                title: "25. Cửa Lưới Chống Muỗi Hệ Xếp",
                 price: "Theo kích thước cửa",
                 desc: "Cửa chống muỗi hệ xếp thiết kế hiện đại, xếp gọn như nan quạt, dễ dàng vệ sinh.",
                 subFolders: ["Cửa Chống Muỗi Hệ Xếp 1 Cánh", "Cửa Chống Muỗi Hệ Xếp 2 Cánh Đối Đầu", "Cửa Chống Muỗi Hệ Xếp Không Ray Dưới"],
-                images: [
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
             },
             {
-                id: 5, category: "cualuoi",
-                title: "5. Cửa Chống Muỗi Hệ Lùa Lưới Inox 304",
+                id: 26, category: "cualuoi",
+                title: "26. Cửa Lưới Chống Muỗi Hệ Lùa Lưới Inox 304",
                 price: "Theo kích thước cửa",
                 desc: "Cửa lùa khung nhôm chắc chắn kết hợp lưới inox 304 chống chuột, chống côn trùng tuyệt đối.",
                 subFolders: ["Cửa Lùa 1 Cánh Lưới Inox 304", "Cửa Lùa 2 Cánh Lưới Inox 304", "Cửa Lùa Ray Dưới Êm Ái"],
-                images: [
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
             },
             {
-                id: 6, category: "cualuoi",
-                title: "6. Cửa Chống Muỗi Hệ Tự Cuốn",
+                id: 27, category: "cualuoi",
+                title: "27. Cửa Lưới Chống Muỗi Hệ Tự Cuốn",
                 price: "Theo kích thước cửa",
                 desc: "Cửa lưới tự cuốn lò xo dọc hoặc ngang tiện lợi, tự động cuộn gọn khi không sử dụng.",
                 subFolders: ["Cửa Tự Cuốn Lò Xo Dọc Cho Cửa Sổ", "Cửa Tự Cuốn Ngang 1 Cánh", "Cửa Tự Cuốn Chống Côn Trùng Cao Cấp"],
-                images: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
             },
             {
-                id: 7, category: "cualuoi",
-                title: "7. Cửa Chống Muỗi Hệ FIX Cố Định",
+                id: 28, category: "cualuoi",
+                title: "28. Cửa Lưới Chống Muỗi Hệ FIX Cố Định Lưới Inox 304",
                 price: "Theo diện tích",
                 desc: "Khung lưới cố định chuyên dùng cho ô thông gió, cửa sổ ít mở, lưới inox 304 siêu bền.",
                 subFolders: ["Khung Lưới FIX Cố Định Khung Nhôm Xám", "Khung Lưới Cố Định Lưới Inox 304 Nhập Khẩu", "Khung Lưới Ô Thông Gió Cố Định"],
-                images: [
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
+
+            // --- CỬA XẾP LÁ NHÔM / LÁ NHỰA ---
             {
-                id: 8, category: "khac",
-                title: "8. Cửa Xếp Lá Nhôm / Lá Nhựa",
+                id: 29, category: "bat",
+                title: "29. Cửa Xếp Lá Nhôm / Lá Nhựa",
                 price: "Liên hệ xưởng",
                 desc: "Giải pháp vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa tiết kiệm diện tích.",
                 subFolders: ["Cửa Xếp Lá Nhôm / Lá Nhựa Đa Năng Tiện Lợi"],
-                images: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
             },
+
+            // --- LƯỚI AN TOÀN BAN CÔNG & CẦU THANG ---
             {
-                id: 9, category: "luoiantoan",
-                title: "9. Lưới An Toàn Ban Công Cửa Sổ",
+                id: 30, category: "luoiantoan",
+                title: "30. Lưới An Toàn Ban Công Cửa Sổ",
                 price: "Theo diện tích thực tế",
                 desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở nhà cao tầng, tầm nhìn thoáng tàng hình từ xa.",
                 subFolders: ["Lưới An Toàn Cáp Inox Bọc Nhựa Chịu Lực Cao"],
-                images: [
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
             {
-                id: 10, category: "luoiantoan",
-                title: "10. Lưới An Toàn Cầu Thang",
+                id: 31, category: "luoiantoan",
+                title: "31. Lưới An Toàn Cầu Thang",
                 price: "Theo mét dài / diện tích",
                 desc: "Lưới bảo vệ dọc hành lang và cầu thang bộ, chống ngã cho gia đình có trẻ nhỏ và thú cưng.",
                 subFolders: ["Lưới An Toàn Bảo Vệ Lối Đi Cầu Thang"],
-                images: [
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
+
+            // --- VÁCH NGĂN RÈM TỔ ONG ---
             {
-                id: 11, category: "khac",
-                title: "11. Vách Ngăn Rèm Tổ Ong",
+                id: 32, category: "bat",
+                title: "32. Vách Ngăn Rèm Tổ Ong",
                 price: "Báo giá theo m2",
                 desc: "Rèm tổ ong ngăn phòng, ngăn lạnh điều hòa sang trọng, hiện đại và xếp gọn thẩm mỹ.",
                 subFolders: ["Vách Ngăn Rèm Tổ Ong Di Động Cao Cấp"],
-                images: [
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
-                ]
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+
+            // --- 3 MỤC BẠT CHE NẮNG MƯA MỚI THÊM ---
+            {
+                id: 33, category: "bat",
+                title: "33. Bạt Che Nắng Mưa Tự Cuốn",
+                price: "Theo diện tích m2",
+                desc: "Bạt che nắng mưa ban công tự cuốn lò xo thông minh, thả ra và cuốn lên nhanh chóng.",
+                subFolders: ["Lò Xo Tự Cuốn Tiện Lợi", "Bạt Nhựa PVC 3 Lớp Chống Nắng Tốt", "Độ Bền Cao Ngoài Trời"],
+                images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 34, category: "bat",
+                title: "34. Bạt Mái Hiên Di Động",
+                price: "Theo kích thước ngang",
+                desc: "Mái hiên quay tay che nắng mưa trước hiên nhà, quán cà phê, cửa hàng kinh doanh.",
+                subFolders: ["Tay Quay Nhẹ Nhàng", "Khung Nhôm Hợp Kim Chắc Chắn", "Vải Bạt Nhập Khẩu Chống Thấm"],
+                images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
+            },
+            {
+                id: 35, category: "bat",
+                title: "35. Bạt Xếp Di Động (Mái Xếp Lượn Sóng)",
+                price: "Báo giá theo diện tích m2",
+                desc: "Giải pháp che nắng mưa không gian lớn như sân thượng, quán ăn, hồ bơi.",
+                subFolders: ["Hệ Thống Ròng Rọc Kéo Mượt Mà", "Khung Thép Trụ Chịu Lực Vững Chắc", "Che Phủ Diện Tích Lớn Hiệu Quả"],
+                images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
             }
         ];
 
@@ -492,9 +634,9 @@
             { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_v5')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v5')) || defaultVideos;
-        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v5')) || [];
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v6')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v6')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v6')) || [];
         let activeCategory = 'all';
         let currentDetailProduct = null;
 
@@ -611,7 +753,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Hiệu ứng thông báo popup khi mua hàng (Toast)
         function showToast(message) {
             const toast = document.getElementById('toast-notification');
             document.getElementById('toast-message').innerText = message;
@@ -624,7 +765,7 @@
         function addToCartFromDetail() {
             if(!currentDetailProduct) return;
             cart.push(currentDetailProduct);
-            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
             updateCartCount();
             showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
         }
@@ -663,7 +804,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
             updateCartCount();
             openCartModal();
         }
@@ -678,12 +819,11 @@
             }
             alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
             cart = [];
-            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
             updateCartCount();
             closeCartModal();
         }
 
-        // Login & Admin
         function openLoginModal() {
             document.getElementById('admin-user').value = '';
             document.getElementById('admin-pass').value = '';
@@ -742,7 +882,7 @@
                     document.getElementById(`admin-img5-${p.id}`).value
                 ];
             });
-            localStorage.setItem('minhphat_products_v5', JSON.stringify(products));
+            localStorage.setItem('minhphat_products_v6', JSON.stringify(products));
             renderProducts();
             closeAdminModal();
             alert("Đã lưu thay đổi thành công!");
