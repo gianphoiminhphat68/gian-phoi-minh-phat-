@@ -24,6 +24,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .toast-animate {
+            animation: slideIn 0.3s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -64,7 +71,11 @@
             </nav>
 
             <div class="flex items-center gap-3">
-                <a href="tel:0967220838" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow flex items-center gap-2 border border-gold/40">
+                <button onclick="openCartModal()" class="relative p-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-primary font-bold flex items-center gap-2 transition">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-slate-950 text-xs w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+                </button>
+                <a href="tel:0967220838" class="hidden sm:flex px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow items-center gap-2 border border-gold/40">
                     <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
                 </a>
             </div>
@@ -74,25 +85,51 @@
     <!-- Main Container -->
     <main id="main-content">
         <div id="home-view">
-            <section class="bg-gradient-to-b from-slate-900 via-primary to-slate-900 text-white py-20 px-4 text-center">
-                <div class="max-w-4xl mx-auto space-y-6">
-                    <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">CỬA HÀNG TRỰC TUYẾN MINH PHÁT</span>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Giải Pháp Không Gian Sống <span class="text-gold">Thông Minh & An Toàn</span></h1>
-                    <p class="text-slate-300 text-base sm:text-lg">Chuyên phân phối và lắp đặt giàn phơi thông minh, lưới an toàn, cửa chống muỗi, cửa xếp và bạt che cao cấp.</p>
-                    <div class="flex flex-wrap justify-center gap-4 pt-4">
-                        <a href="#products" class="px-8 py-4 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition">Xem Danh Mục Sản Phẩm</a>
-                        <button onclick="openLoginModal()" class="px-8 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition">Đăng Nhập Quản Trị</button>
+            <!-- Auto Slider Banner -->
+            <section class="relative bg-slate-900 text-white overflow-hidden h-[450px] sm:h-[500px]">
+                <div id="slider-container" class="relative w-full h-full">
+                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center bg-gradient-to-r from-slate-950 via-primary to-slate-900 px-6 sm:px-16">
+                        <div class="max-w-3xl space-y-4">
+                            <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">CHÍNH HÃNG - UY TÍN - CHẤT LƯỢNG</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Giàn Phơi Thông Minh <span class="text-gold">Điện Tử & Quay Tay</span></h1>
+                            <p class="text-slate-300 text-base sm:text-lg">Giải pháp tối ưu không gian phơi đồ căn hộ và nhà phố. Lắp đặt trọn gói tận nơi tại TP.HCM.</p>
+                            <div class="pt-2"><a href="#products" class="px-8 py-3.5 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block">Xem Sản Phẩm Ngay</a></div>
+                        </div>
+                    </div>
+                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center bg-gradient-to-r from-slate-900 via-slate-950 to-primary px-6 sm:px-16">
+                        <div class="max-w-3xl space-y-4">
+                            <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">BẢO VỆ GIA ĐÌNH BẠN</span>
+                            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Cửa Lưới Chống Muỗi & <span class="text-gold">Lưới An Toàn</span></h1>
+                            <p class="text-slate-300 text-base sm:text-lg">Ngăn chặn côn trùng tuyệt đối, bảo vệ an toàn cho trẻ nhỏ ở các tòa nhà cao tầng.</p>
+                            <div class="pt-2"><a href="#products" class="px-8 py-3.5 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block">Khám Phá Ngay</a></div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Product Listing Grid -->
+            <!-- Product Listing & Search/Filter Section -->
             <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-12">
+                <div class="text-center mb-10">
                     <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tất Cả Sản Phẩm & Dịch Vụ</h2>
-                    <p class="text-slate-600 mt-2">Bấm vào sản phẩm để xem thông số kỹ thuật chi tiết, phân loại mẫu mã và đặt hàng.</p>
+                    <p class="text-slate-600 mt-2">Tìm kiếm nhanh hoặc chọn lọc danh mục sản phẩm bạn quan tâm.</p>
                 </div>
+
+                <!-- Search & Filter Bar -->
+                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-10 flex flex-col md:flex-row gap-4 justify-between items-center">
+                    <div class="relative w-full md:w-96">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                        <input type="text" id="search-input" oninput="filterProducts()" placeholder="Nhập tên sản phẩm cần tìm..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+                    <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
+                        <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold transition">Tất Cả</button>
+                        <button onclick="filterCategory('gianphoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Giàn Phơi</button>
+                        <button onclick="filterCategory('cualuoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Cửa Lưới</button>
+                        <button onclick="filterCategory('luoiantoan')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Lưới An Toàn</button>
+                        <button onclick="filterCategory('khac')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Khác</button>
+                    </div>
+                </div>
+
                 <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </section>
 
@@ -136,7 +173,7 @@
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900 mb-2">Gói Toàn Diện</h3>
                                 <div class="text-3xl font-black text-gold my-4">Giá xưởng tốt nhất</div>
-                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, lưới an toàn & cửa chống muỗi đo đạc tận nơi.</p>
+                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, cửa xếp lá nhôm nhựa đo đạc lắp đặt trọn gói tận nơi.</p>
                             </div>
                             <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
                         </div>
@@ -152,14 +189,21 @@
             </button>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
-                <div class="rounded-2xl overflow-hidden bg-slate-100 h-96 border border-slate-200 flex items-center justify-center">
-                    <img id="detail-img" src="" alt="Sản phẩm Minh Phát" class="w-full h-full object-cover">
+                <div>
+                    <div class="rounded-2xl overflow-hidden bg-slate-100 h-80 sm:h-96 border border-slate-200 mb-4">
+                        <img id="detail-main-img" src="" alt="Sản phẩm Minh Phát" class="w-full h-full object-cover">
+                    </div>
+                    <div id="detail-thumbnails" class="grid grid-cols-5 gap-2"></div>
                 </div>
 
                 <div class="space-y-6 flex flex-col justify-between">
                     <div>
                         <span class="px-3 py-1 bg-gold/10 text-gold text-xs font-bold uppercase rounded-full border border-gold/30">Sản Phẩm Chính Hãng Minh Phát</span>
                         <h2 id="detail-title" class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tên Sản Phẩm</h2>
+                        <div class="flex items-center gap-1 text-amber-500 my-2 text-sm">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="text-slate-500 text-xs ml-2">(5.0 / 5 sao từ khách hàng)</span>
+                        </div>
                         <div id="detail-price" class="text-2xl font-black text-gold my-3">Liên hệ báo giá</div>
                         <p id="detail-desc" class="text-slate-600 text-base leading-relaxed">Mô tả chi tiết sản phẩm...</p>
                     </div>
@@ -170,11 +214,11 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-slate-100">
-                        <a href="tel:0967220838" class="flex-1 py-4 rounded-xl bg-gold text-slate-950 font-bold text-center shadow-lg hover:bg-gold-light transition flex items-center justify-center gap-2 text-base">
-                            <i class="fas fa-phone-alt"></i> Gọi Đặt Hàng: 0967.220.838
-                        </a>
-                        <a href="https://zalo.me/0967220838" target="_blank" class="px-6 py-4 rounded-xl bg-blue-600 text-white font-bold text-center shadow-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
-                            <i class="fab fa-facebook-messenger"></i> Chat Zalo Tư Vấn
+                        <button onclick="addToCartFromDetail()" class="flex-1 py-4 rounded-xl bg-gold text-slate-950 font-bold text-center shadow-lg hover:bg-gold-light transition flex items-center justify-center gap-2 text-base">
+                            <i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng
+                        </button>
+                        <a href="tel:0967220838" class="px-6 py-4 rounded-xl bg-primary text-white font-bold text-center shadow-lg hover:bg-slate-900 transition flex items-center justify-center gap-2">
+                            <i class="fas fa-phone-alt text-gold"></i> Gọi Nhanh
                         </a>
                     </div>
                 </div>
@@ -182,33 +226,53 @@
         </div>
     </main>
 
+    <!-- Modal Giỏ Hàng -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200">
+            <button onclick="closeCartModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-2xl font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-shopping-cart text-gold"></i> Giỏ Hàng Của Bạn</h3>
+            
+            <div id="cart-items-container" class="max-h-60 overflow-y-auto space-y-3 mb-6 divide-y divide-slate-100"></div>
+
+            <div class="border-t border-slate-200 pt-4 space-y-3">
+                <h4 class="font-bold text-slate-900 text-sm">Thông tin đặt lịch lắp đặt:</h4>
+                <input type="text" id="order-name" placeholder="Họ và tên của bạn" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                <input type="text" id="order-phone" placeholder="Số điện thoại liên hệ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                <input type="text" id="order-address" placeholder="Địa chỉ lắp đặt tại TP.HCM" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
+                <button onclick="submitOrder()" class="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-slate-900 transition shadow">Gửi Đơn Đặt Hàng Ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Popup (Hiệu ứng thông báo khi mua hàng) -->
+    <div id="toast-notification" class="fixed top-24 right-6 z-50 hidden bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold flex items-center gap-3 toast-animate">
+        <div class="w-8 h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold"><i class="fas fa-check"></i></div>
+        <div>
+            <div class="font-bold text-sm">Thành công!</div>
+            <div id="toast-message" class="text-xs text-slate-300">Đã thêm sản phẩm vào giỏ hàng.</div>
+        </div>
+    </div>
+
     <!-- Modal Đăng Nhập Admin -->
     <div id="login-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-gold">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
             <div class="text-center mb-6">
-                <div class="w-14 h-14 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 border border-gold/40">
-                    <i class="fas fa-lock"></i>
-                </div>
+                <div class="w-14 h-14 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 border border-gold/40"><i class="fas fa-lock"></i></div>
                 <h3 class="text-2xl font-bold text-white">Đăng Nhập Quản Trị</h3>
-                <p class="text-slate-400 text-xs mt-1">Vui lòng nhập tài khoản admin để tiếp tục</p>
+                <p class="text-slate-400 text-xs mt-1">Mật khẩu: MinhPhat372313</p>
             </div>
-
             <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Tên Đăng Nhập</label>
-                    <input type="text" id="admin-user" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Nhập tài khoản">
+                    <input type="text" id="admin-user" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm" placeholder="Nhập tài khoản">
                 </div>
                 <div>
                     <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Mật Khẩu</label>
-                    <input type="password" id="admin-pass" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Nhập mật khẩu">
+                    <input type="password" id="admin-pass" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm" placeholder="Nhập mật khẩu">
                 </div>
                 <div id="login-error" class="text-red-400 text-xs hidden">Tên đăng nhập hoặc mật khẩu không chính xác!</div>
-                <button onclick="checkLogin()" class="w-full py-3.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-base">
-                    Đăng Nhập
-                </button>
+                <button onclick="checkLogin()" class="w-full py-3.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-base">Đăng Nhập</button>
             </div>
         </div>
     </div>
@@ -216,24 +280,12 @@
     <!-- Modal Quản Lý (Admin Dashboard) -->
     <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-slate-900 text-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3 class="text-2xl font-bold text-gold mb-2"><i class="fas fa-cog mr-2"></i>Bảng Quản Lý Sản Phẩm & Video</h3>
-            <p class="text-slate-400 text-sm mb-6">Chỉnh sửa giá tiền, thông số, hình ảnh và video trực tiếp ngay trên trang web.</p>
-            
-            <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-                <h4 class="text-lg font-bold text-primary bg-gold/20 p-2 rounded-lg text-gold">1. Quản Lý Sản Phẩm & Giá</h4>
-                <div id="admin-product-container" class="space-y-4"></div>
-
-                <h4 class="text-lg font-bold text-primary bg-gold/20 p-2 rounded-lg text-gold mt-6">2. Quản Lý Video Thực Tế</h4>
-                <div id="admin-video-container" class="space-y-4"></div>
-            </div>
-
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-2xl font-bold text-gold mb-2"><i class="fas fa-cog mr-2"></i>Bảng Quản Lý Sản Phẩm & Hình Ảnh</h3>
+            <p class="text-slate-400 text-sm mb-6">Chỉnh sửa giá tiền, thông số, 5 hình ảnh minh họa cho từng sản phẩm.</p>
+            <div id="admin-product-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2"></div>
             <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-4">
-                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">
-                    <i class="fas fa-save mr-2"></i> Lưu Lại Tất Cả
-                </button>
+                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Lưu Lại Tất Cả</button>
                 <button onclick="closeAdminModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Đóng</button>
             </div>
         </div>
@@ -251,75 +303,187 @@
         <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
     </footer>
 
-    <!-- JavaScript Xử Lý Danh Mục Mới -->
+    <!-- Tawk.to Script (Tích hợp chat trực tuyến) -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default'; // Bạn có thể thay link widget Tawk.to của riêng bạn tại đây
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+
+    <!-- JavaScript Xử Lý Toàn Bộ Tính Năng -->
     <script>
         const ADMIN_USER = "admin";
         const ADMIN_PASS = "MinhPhat372313";
 
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        setInterval(() => {
+            if(slides.length === 0) return;
+            slides[currentSlide].style.opacity = '0';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = '1';
+        }, 4000);
+
         let defaultProducts = [
             {
-                id: 1,
-                title: "1. Giàn Phơi Thông Minh Điện Tử (5 Mẫu)",
+                id: 1, category: "gianphoi",
+                title: "1. Giàn Phơi Thông Minh Điện Tử",
                 price: "Liên hệ giá tốt nhất",
-                desc: "Hệ thống giàn phơi điện tử cao cấp tích hợp điều khiển từ xa, đèn UV diệt khuẩn, quạt sấy khô và cảm biến tự dừng an toàn.",
-                subFolders: ["Mẫu Điện Tử Điều Khiển Từ Xa 1 Thanh", "Mẫu Điện Tử 2 Thanh Nâng Hạ Độc Lập", "Mẫu Điện Tử Tích Hợp Đèn UV Sấy Khô", "Mẫu Điện Tử Cảm Biến Chống Rơi", "Mẫu Điện Tử Nhôm Đúc Nguyên Khối"],
-                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                desc: "Dòng giàn phơi thông minh điều khiển từ xa cao cấp tích hợp đèn UV diệt khuẩn và quạt sấy.",
+                subFolders: ["Mẫu Điện Tử Điều Khiển Từ Xa Tiêu Chuẩn", "Mẫu Điện Tử Tích Hợp Đèn UV Diệt Khuẩn", "Mẫu Điện Tử Quạt Sấy Khô Quần Áo", "Mẫu Điện Tử Cảm Biến Tự Dừng Khi Gặp Vật Cản", "Mẫu Điện Tử Cao Cấp Nhôm Đúc Nguyên Khối"],
+                images: [
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 2,
-                title: "2. Giàn Phơi Quay Tay Gắn Trần (13 Mẫu)",
-                price: "Từ 650.000đ - 1.600.000đ",
-                desc: "Đa dạng 13 mẫu giàn phơi quay tay gắn trần sử dụng trục quay hãm vòng bi tự động nhẹ nhàng, bền bỉ.",
-                subFolders: ["Mẫu Quay Tay Inox 304 Hoàn Hảo", "Mẫu Nhôm Sáng Bạc Tiêu Chuẩn", "Mẫu Sơn Vàng Đồng Cao Cấp", "Mẫu Thanh Phơi Đục Lỗ Sẵn 80 Lỗ", "Mẫu Quay Tay Đĩa Tròn CNC", "Mẫu Hộp Quay Liền Trục Cao Cấp", "Mẫu Nhôm Hàng Phổ Thông", "Mẫu Quay Tay Tải Trọng 60kg", "Mẫu Nhôm Dày Chống Gỉ", "Mẫu Thanh Phơi Gỗ Khắc CNC", "Mẫu Gắn Trần Ban Công Chung Cư", "Mẫu Quay Tay Kép Chuyên Dụng", "Mẫu Đặc Biệt Minh Phát"],
-                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                id: 2, category: "gianphoi",
+                title: "2. Giàn Phơi Quay Tay Gắn Trần",
+                price: "Từ 650.000đ - 1.500.000đ",
+                desc: "Hệ thống giàn phơi quay tay gắn trần với cơ cấu hãm vòng bi tự động nhẹ nhàng, bền bỉ.",
+                subFolders: ["Mẫu Quay Tay Inox 304 Hoàn Hảo", "Mẫu Quay Tay Hợp Kim Nhôm Bạc", "Mẫu Quay Tay Sơn Vàng Đồng Sang Trọng", "Mẫu Quay Tay Thanh Phơi Gỗ", "Mẫu Quay Tay Đơn Trục Nhẹ Nhàng"],
+                images: [
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 3,
-                title: "3. Giàn Phơi Xếp Ngang (6 Mẫu)",
+                id: 3, category: "gianphoi",
+                title: "3. Giàn Phơi Xếp Ngang Gắn Tường",
                 price: "Từ 850.000đ / bộ",
-                desc: "Giải pháp phơi đồ gắn tường kéo ra xếp gọn thông minh với 6 mẫu mã phù hợp mọi không gian hẹp.",
-                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm Tải Lớn", "Mẫu Xếp Gắn Tường Inox Kéo Giãn", "Mẫu Xếp Ngang Gắn Tường Nhôm Bạc", "Mẫu Xếp Ngang Sơn Tĩnh Điện Vàng Đồng", "Mẫu Xếp Ngang Gấp Gọn 2 Thanh", "Mẫu Xếp Ngang Ban Công Nhỏ"],
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                desc: "Thiết kế gắn tường kéo ra xếp vào thông minh, tối ưu diện tích cho sân phơi và lô gia nhỏ.",
+                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm Kéo Dài", "Mẫu Xếp Tường Inox 304 Chống Gỉ", "Mẫu Xếp Gắn Tường Khung Ziczac", "Mẫu Xếp Ngang Gọn Gàng Tiết Kiệm Không Gian", "Mẫu Xếp Tường Tải Trọng Lớn 50kg"],
+                images: [
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 4,
-                title: "4. Cửa Lưới Chống Muỗi (3 Hệ Chính)",
-                price: "Khảo sát đo đạc miễn phí",
-                desc: "Hệ thống cửa chống muỗi ngăn côn trùng hiệu quả với các dòng hệ xếp, hệ lùa lưới inox 304, hệ tự cuốn và hệ FIX cố định lưới inox 304.",
-                subFolders: ["Cửa Chống Muỗi Hệ Xếp", "Cửa Chống Muỗi Hệ Lùa Lưới Inox 304", "Cửa Chống Muỗi Hệ Tự Cuốn", "Cửa Chống Muỗi Hệ FIX Cố Định Lưới Inox 304"],
-                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                id: 4, category: "cualuoi",
+                title: "4. Cửa Lưới Chống Muỗi Hệ Xếp",
+                price: "Theo kích thước cửa",
+                desc: "Cửa chống muỗi hệ xếp thiết kế hiện đại, xếp gọn như nan quạt, dễ dàng vệ sinh.",
+                subFolders: ["Cửa Chống Muỗi Hệ Xếp 1 Cánh", "Cửa Chống Muỗi Hệ Xếp 2 Cánh Đối Đầu", "Cửa Chống Muỗi Hệ Xếp Không Ray Dưới"],
+                images: [
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 5,
-                title: "5. Cửa Xếp Lá Nhôm / Lá Nhựa",
+                id: 5, category: "cualuoi",
+                title: "5. Cửa Chống Muỗi Hệ Lùa Lưới Inox 304",
+                price: "Theo kích thước cửa",
+                desc: "Cửa lùa khung nhôm chắc chắn kết hợp lưới inox 304 chống chuột, chống côn trùng tuyệt đối.",
+                subFolders: ["Cửa Lùa 1 Cánh Lưới Inox 304", "Cửa Lùa 2 Cánh Lưới Inox 304", "Cửa Lùa Ray Dưới Êm Ái"],
+                images: [
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                id: 6, category: "cualuoi",
+                title: "6. Cửa Chống Muỗi Hệ Tự Cuốn",
+                price: "Theo kích thước cửa",
+                desc: "Cửa lưới tự cuốn lò xo dọc hoặc ngang tiện lợi, tự động cuộn gọn khi không sử dụng.",
+                subFolders: ["Cửa Tự Cuốn Lò Xo Dọc Cho Cửa Sổ", "Cửa Tự Cuốn Ngang 1 Cánh", "Cửa Tự Cuốn Chống Côn Trùng Cao Cấp"],
+                images: [
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                id: 7, category: "cualuoi",
+                title: "7. Cửa Chống Muỗi Hệ FIX Cố Định",
+                price: "Theo diện tích",
+                desc: "Khung lưới cố định chuyên dùng cho ô thông gió, cửa sổ ít mở, lưới inox 304 siêu bền.",
+                subFolders: ["Khung Lưới FIX Cố Định Khung Nhôm Xám", "Khung Lưới Cố Định Lưới Inox 304 Nhập Khẩu", "Khung Lưới Ô Thông Gió Cố Định"],
+                images: [
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+                ]
+            },
+            {
+                id: 8, category: "khac",
+                title: "8. Cửa Xếp Lá Nhôm / Lá Nhựa",
                 price: "Liên hệ xưởng",
-                desc: "Cửa xếp lá nhôm và lá nhựa cao cấp dùng làm vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa tiết kiệm diện tích.",
-                subFolders: ["Cửa Xếp Lá Nhôm Giả Gỗ & Lá Nhựa PVC Cao Cấp"],
-                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                desc: "Giải pháp vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa tiết kiệm diện tích.",
+                subFolders: ["Cửa Xếp Lá Nhôm / Lá Nhựa Đa Năng Tiện Lợi"],
+                images: [
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 6,
-                title: "6. Lưới An Toàn Ban Công Cửa Sổ",
+                id: 9, category: "luoiantoan",
+                title: "9. Lưới An Toàn Ban Công Cửa Sổ",
                 price: "Theo diện tích thực tế",
-                desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở chung cư, nhà cao tầng. Cáp inox 304 lõi xoắn bọc nhựa trong suốt.",
-                subFolders: ["Lưới An Toàn Ban Công & Cửa Sổ Tiêu Chuẩn Minh Phát"],
-                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+                desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở nhà cao tầng, tầm nhìn thoáng tàng hình từ xa.",
+                subFolders: ["Lưới An Toàn Cáp Inox Bọc Nhựa Chịu Lực Cao"],
+                images: [
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 7,
-                title: "7. Lưới An Toàn Cầu Thang",
-                price: "Khảo sát tận nơi",
-                desc: "Giải pháp bảo vệ an toàn dọc theo lối đi cầu thang bộ trong nhà phố, biệt thự, trường mầm non.",
-                subFolders: ["Lưới An Toàn Cầu Thang Thẩm Mỹ Cao"],
-                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+                id: 10, category: "luoiantoan",
+                title: "10. Lưới An Toàn Cầu Thang",
+                price: "Theo mét dài / diện tích",
+                desc: "Lưới bảo vệ dọc hành lang và cầu thang bộ, chống ngã cho gia đình có trẻ nhỏ và thú cưng.",
+                subFolders: ["Lưới An Toàn Bảo Vệ Lối Đi Cầu Thang"],
+                images: [
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+                ]
             },
             {
-                id: 8,
-                title: "8. Vách Ngăn Rèm Tổ Ong",
+                id: 11, category: "khac",
+                title: "11. Vách Ngăn Rèm Tổ Ong",
                 price: "Báo giá theo m2",
-                desc: "Vách ngăn rèm tổ ong cách nhiệt, cản sáng, ngăn phòng và giữ nhiệt điều hòa cực tốt.",
-                subFolders: ["Vách Ngăn Rèm Tổ Ong Cao Cấp Nhập Khẩu"],
-                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                desc: "Rèm tổ ong ngăn phòng, ngăn lạnh điều hòa sang trọng, hiện đại và xếp gọn thẩm mỹ.",
+                subFolders: ["Vách Ngăn Rèm Tổ Ong Di Động Cao Cấp"],
+                images: [
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
+                ]
             }
         ];
 
@@ -328,33 +492,65 @@
             { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_eco_v2')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_eco_v2')) || defaultVideos;
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v5')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v5')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v5')) || [];
+        let activeCategory = 'all';
+        let currentDetailProduct = null;
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
+            const keyword = document.getElementById('search-input').value.toLowerCase();
             grid.innerHTML = '';
-            products.forEach(p => {
-                const isSpan = p.id === 8 ? 'md:col-span-2 lg:col-span-3 bg-blue-50' : 'bg-white';
+
+            const filtered = products.filter(p => {
+                const matchCat = activeCategory === 'all' || p.category === activeCategory;
+                const matchKey = p.title.toLowerCase().includes(keyword) || p.desc.toLowerCase().includes(keyword);
+                return matchCat && matchKey;
+            });
+
+            if(filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-10 text-slate-500">Không tìm thấy sản phẩm phù hợp.</div>`;
+                return;
+            }
+
+            filtered.forEach(p => {
                 const div = document.createElement('div');
-                div.className = `${isSpan} rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-6 cursor-pointer group`;
+                div.className = `bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-6 cursor-pointer group`;
                 div.onclick = () => showDetail(p.id);
                 div.innerHTML = `
                     <div>
                         <div class="h-48 rounded-xl overflow-hidden mb-4 bg-slate-200">
-                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <img src="${p.images[0]}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary transition">${p.title}</h3>
+                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-primary transition">${p.title}</h3>
+                        <div class="flex items-center gap-1 text-amber-500 mb-2 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span class="text-slate-400 ml-1">(5.0)</span>
+                        </div>
                         <p class="text-gold font-bold text-sm mb-2">${p.price}</p>
                         <p class="text-slate-600 text-sm line-clamp-2">${p.desc}</p>
                     </div>
                     <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-primary font-semibold text-sm">
-                        <span>Xem chi tiết & đặt hàng</span>
+                        <span>Xem chi tiết & mua hàng</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
                     </div>
                 `;
                 grid.appendChild(div);
             });
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition";
+            });
+            event.target.className = "cat-btn px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold transition";
+            renderProducts();
+        }
+
+        function filterProducts() {
+            renderProducts();
         }
 
         function renderVideos() {
@@ -376,10 +572,24 @@
         function showDetail(id) {
             const p = products.find(item => item.id === id);
             if (!p) return;
+            currentDetailProduct = p;
             document.getElementById('detail-title').innerText = p.title;
             document.getElementById('detail-price').innerText = p.price;
             document.getElementById('detail-desc').innerText = p.desc;
-            document.getElementById('detail-img').src = p.image;
+            
+            document.getElementById('detail-main-img').src = p.images[0];
+
+            const thumbContainer = document.getElementById('detail-thumbnails');
+            thumbContainer.innerHTML = '';
+            p.images.forEach((imgUrl) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'h-16 rounded-xl overflow-hidden border-2 border-slate-200 hover:border-gold cursor-pointer transition';
+                thumb.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
+                thumb.onclick = () => {
+                    document.getElementById('detail-main-img').src = imgUrl;
+                };
+                thumbContainer.appendChild(thumb);
+            });
 
             const sublist = document.getElementById('detail-sublist');
             sublist.innerHTML = '';
@@ -401,6 +611,79 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // Hiệu ứng thông báo popup khi mua hàng (Toast)
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function addToCartFromDetail() {
+            if(!currentDetailProduct) return;
+            cart.push(currentDetailProduct);
+            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            updateCartCount();
+            showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
+        }
+
+        function updateCartCount() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        function openCartModal() {
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-slate-500 text-center py-4">Giỏ hàng của bạn đang trống.</p>`;
+            } else {
+                cart.forEach((item, index) => {
+                    container.innerHTML += `
+                        <div class="flex justify-between items-center py-2">
+                            <div class="flex items-center gap-3">
+                                <img src="${item.images[0]}" class="w-12 h-12 rounded-lg object-cover">
+                                <div>
+                                    <h5 class="font-bold text-sm text-slate-900">${item.title}</h5>
+                                    <span class="text-gold text-xs font-bold">${item.price}</span>
+                                </div>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm"><i class="fas fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+            }
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            updateCartCount();
+            openCartModal();
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('order-name').value;
+            const phone = document.getElementById('order-phone').value;
+            const address = document.getElementById('order-address').value;
+            if(!name || !phone || !address) {
+                alert("Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ!");
+                return;
+            }
+            alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
+            cart = [];
+            localStorage.setItem('minhphat_cart_v5', JSON.stringify(cart));
+            updateCartCount();
+            closeCartModal();
+        }
+
+        // Login & Admin
         function openLoginModal() {
             document.getElementById('admin-user').value = '';
             document.getElementById('admin-pass').value = '';
@@ -413,10 +696,7 @@
         }
 
         function checkLogin() {
-            const user = document.getElementById('admin-user').value;
-            const pass = document.getElementById('admin-pass').value;
-
-            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+            if(document.getElementById('admin-user').value === ADMIN_USER && document.getElementById('admin-pass').value === ADMIN_PASS) {
                 closeLoginModal();
                 openAdminModal();
             } else {
@@ -425,33 +705,23 @@
         }
 
         function openAdminModal() {
-            const prodContainer = document.getElementById('admin-product-container');
-            prodContainer.innerHTML = '';
+            const container = document.getElementById('admin-product-container');
+            container.innerHTML = '';
             products.forEach((p, index) => {
-                prodContainer.innerHTML += `
+                container.innerHTML += `
                     <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
                         <h5 class="font-bold text-gold text-xs">Sản phẩm ${index + 1}</h5>
-                        <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Tên sản phẩm">
-                        <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Giá tiền">
+                        <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Tên">
+                        <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Giá">
                         <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Mô tả">${p.desc}</textarea>
-                        <input type="text" id="admin-sub-${p.id}" value="${p.subFolders.join(', ')}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Mẫu mã (cách nhau bằng dấu phẩy)">
-                        <input type="text" id="admin-img-${p.id}" value="${p.image}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link hình ảnh URL">
+                        <input type="text" id="admin-img1-${p.id}" value="${p.images[0]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 1">
+                        <input type="text" id="admin-img2-${p.id}" value="${p.images[1]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 2">
+                        <input type="text" id="admin-img3-${p.id}" value="${p.images[2]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 3">
+                        <input type="text" id="admin-img4-${p.id}" value="${p.images[3]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 4">
+                        <input type="text" id="admin-img5-${p.id}" value="${p.images[4]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 5">
                     </div>
                 `;
             });
-
-            const vidContainer = document.getElementById('admin-video-container');
-            vidContainer.innerHTML = '';
-            videos.forEach((v, index) => {
-                vidContainer.innerHTML += `
-                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
-                        <h5 class="font-bold text-gold text-xs">Video ${index + 1}</h5>
-                        <input type="text" id="admin-vtitle-${v.id}" value="${v.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Tiêu đề video">
-                        <input type="text" id="admin-vurl-${v.id}" value="${v.url}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link nhúng YouTube (Embed URL)">
-                    </div>
-                `;
-            });
-
             document.getElementById('admin-modal').classList.remove('hidden');
         }
 
@@ -464,26 +734,24 @@
                 p.title = document.getElementById(`admin-title-${p.id}`).value;
                 p.price = document.getElementById(`admin-price-${p.id}`).value;
                 p.desc = document.getElementById(`admin-desc-${p.id}`).value;
-                p.subFolders = document.getElementById(`admin-sub-${p.id}`).value.split(',').map(s => s.trim()).filter(s => s.length > 0);
-                p.image = document.getElementById(`admin-img-${p.id}`).value;
+                p.images = [
+                    document.getElementById(`admin-img1-${p.id}`).value,
+                    document.getElementById(`admin-img2-${p.id}`).value,
+                    document.getElementById(`admin-img3-${p.id}`).value,
+                    document.getElementById(`admin-img4-${p.id}`).value,
+                    document.getElementById(`admin-img5-${p.id}`).value
+                ];
             });
-
-            videos.forEach(v => {
-                v.title = document.getElementById(`admin-vtitle-${v.id}`).value;
-                v.url = document.getElementById(`admin-vurl-${v.id}`).value;
-            });
-
-            localStorage.setItem('minhphat_products_eco_v2', JSON.stringify(products));
-            localStorage.setItem('minhphat_videos_eco_v2', JSON.stringify(videos));
+            localStorage.setItem('minhphat_products_v5', JSON.stringify(products));
             renderProducts();
-            renderVideos();
             closeAdminModal();
-            alert("Đã cập nhật cửa hàng thành công!");
+            alert("Đã lưu thay đổi thành công!");
         }
 
         window.onload = function() {
             renderProducts();
             renderVideos();
+            updateCartCount();
         };
     </script>
 </body>
