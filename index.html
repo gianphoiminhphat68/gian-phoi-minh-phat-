@@ -50,10 +50,9 @@
     <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <!-- Vị trí Logo ngay đầu trang thay vào chữ Minh Phát -->
             <a href="javascript:showHome()" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 rounded-xl bg-slate-900 border border-gold/50 flex items-center justify-center p-1 shadow">
-                    <div class="text-gold font-extrabold text-[10px] text-center leading-tight">MINH<br>PHÁT</div>
-                </div>
+                <img src="https://i.imgur.com/7A26Wjy.png" alt="Logo Minh Phát" class="w-12 h-12 object-contain rounded-xl shadow border border-gold/50 bg-slate-900 p-1" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=150&q=80'">
                 <div>
                     <span class="text-xl sm:text-2xl font-extrabold text-primary tracking-wide">MINH PHÁT</span>
                     <span class="block text-xs font-semibold tracking-wider text-gold uppercase">Giàn Phơi & Cửa Lưới</span>
@@ -133,14 +132,14 @@
                 <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </section>
 
-            <!-- Video Section -->
+            <!-- Video Section (Cập nhật 4 mục video theo yêu cầu) -->
             <section id="videos" class="py-16 bg-white border-t border-slate-200">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
                         <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Video Thực Tế</span>
                         <h2 class="text-3xl font-extrabold text-primary mt-3">Video Lắp Đặt & Thi Công</h2>
                     </div>
-                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
                 </div>
             </section>
 
@@ -317,9 +316,7 @@
             slides[currentSlide].style.opacity = '1';
         }, 4000);
 
-        // Danh sách sản phẩm chính xác theo đúng yêu cầu phân tách
         let defaultProducts = [
-            // --- 5 MỤC GIÀN PHƠI ĐIỆN TỬ ---
             {
                 id: 1, category: "gianphoi",
                 title: "1. Giàn Phơi Thông Minh Điện Tử Tiêu Chuẩn",
@@ -360,8 +357,6 @@
                 subFolders: ["Nhôm Đúc Nguyên Khối 100%", "Tải Trọng Phơi Lớn Trên 75kg", "Bảo Hành Chính Hãng 5 Năm"],
                 images: ["https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- 13 MỤC GIÀN PHƠI QUAY TAY GẮN TRẦN ---
             {
                 id: 6, category: "gianphoi",
                 title: "6. Giàn Phơi Quay Tay Inox 304 Hoàn Hảo",
@@ -466,8 +461,6 @@
                 subFolders: ["Nhập Khẩu Nguyên Bộ Cao Cấp", "Công Nghệ Châu Âu", "Bảo Hành Vàng 5 Năm"],
                 images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- 6 MỤC GIÀN PHƠI XẾP NGANG ---
             {
                 id: 19, category: "gianphoi",
                 title: "19. Giàn Phơi Xếp Ngang 3 Thanh Nhôm Kéo Dài",
@@ -516,8 +509,6 @@
                 subFolders: ["Giá Thành Tiết Kiệm", "Độ Bền Ổn Định", "Bảo Hành 2 Năm"],
                 images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- CỬA LƯỚI CHỐNG MUỖI (4 MỤC RIÊNG BIỆT) ---
             {
                 id: 25, category: "cualuoi",
                 title: "25. Cửa Lưới Chống Muỗi Hệ Xếp",
@@ -550,8 +541,6 @@
                 subFolders: ["Khung Lưới FIX Cố Định Khung Nhôm Xám", "Khung Lưới Cố Định Lưới Inox 304 Nhập Khẩu", "Khung Lưới Ô Thông Gió Cố Định"],
                 images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- CỬA XẾP LÁ NHÔM / LÁ NHỰA ---
             {
                 id: 29, category: "bat",
                 title: "29. Cửa Xếp Lá Nhôm / Lá Nhựa",
@@ -560,8 +549,6 @@
                 subFolders: ["Cửa Xếp Lá Nhôm / Lá Nhựa Đa Năng Tiện Lợi"],
                 images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- LƯỚI AN TOÀN BAN CÔNG & CẦU THANG ---
             {
                 id: 30, category: "luoiantoan",
                 title: "30. Lưới An Toàn Ban Công Cửa Sổ",
@@ -578,8 +565,6 @@
                 subFolders: ["Lưới An Toàn Bảo Vệ Lối Đi Cầu Thang"],
                 images: ["https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- VÁCH NGĂN RÈM TỔ ONG ---
             {
                 id: 32, category: "bat",
                 title: "32. Vách Ngăn Rèm Tổ Ong",
@@ -588,8 +573,6 @@
                 subFolders: ["Vách Ngăn Rèm Tổ Ong Di Động Cao Cấp"],
                 images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"]
             },
-
-            // --- 3 MỤC BẠT CHE NẮNG MƯA MỚI THÊM ---
             {
                 id: 33, category: "bat",
                 title: "33. Bạt Che Nắng Mưa Tự Cuốn",
@@ -616,9 +599,12 @@
             }
         ];
 
+        // Cập nhật 4 mục video theo yêu cầu: Giàn phơi gắn trần, Giàn phơi xếp ngang, Giàn phơi điện tử, Cửa lưới chống muỗi
         let defaultVideos = [
-            { id: 1, title: "Video Lắp Đặt Giàn Phơi Điện Tử Thực Tế", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-            { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+            { id: 1, title: "Video Lắp Đặt Giàn Phơi Gắn Trần Thực Tế", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { id: 2, title: "Video Lắp Đặt Giàn Phơi Xếp Ngang Thực Tế", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { id: 3, title: "Video Hướng Dẫn Giàn Phơi Thông Minh Điện Tử", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
+            { id: 4, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
         let products = JSON.parse(localStorage.getItem('minhphat_products_v8')) || defaultProducts;
@@ -689,10 +675,10 @@
                 const div = document.createElement('div');
                 div.className = 'bg-slate-50 rounded-2xl overflow-hidden shadow border border-slate-200 p-4';
                 div.innerHTML = `
-                    <div class="h-52 rounded-xl overflow-hidden mb-3 bg-black">
+                    <div class="h-48 rounded-xl overflow-hidden mb-3 bg-black">
                         <iframe src="${v.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-base">${v.title}</h3>
+                    <h3 class="font-bold text-slate-900 text-sm">${v.title}</h3>
                 `;
                 grid.appendChild(div);
             });
@@ -882,18 +868,17 @@
         };
     </script>
 
-    <!-- Start of Tawk.to Script -->
+    <!-- Tawk.to Live Chat Script Integration -->
     <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
-    <!-- End of Tawk.to Script -->
 </body>
 </html>
