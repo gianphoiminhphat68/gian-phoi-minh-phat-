@@ -50,7 +50,6 @@
     <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-            <!-- Vị trí Logo ngay đầu trang thay vào chữ Minh Phát -->
             <a href="javascript:showHome()" class="flex items-center gap-3 group">
                 <img src="https://i.imgur.com/7A26Wjy.png" alt="Logo Minh Phát" class="w-12 h-12 object-contain rounded-xl shadow border border-gold/50 bg-slate-900 p-1" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=150&q=80'">
                 <div>
@@ -64,7 +63,6 @@
                 <a href="#products" onclick="showHome()" class="hover:text-gold transition">Sản Phẩm</a>
                 <a href="#videos" onclick="showHome()" class="hover:text-gold transition">Video Thực Tế</a>
                 <a href="#pricing" onclick="showHome()" class="hover:text-gold transition">Bảng Giá</a>
-                <!-- Nút truy cập nhanh Bảng điều khiển Tawk.to Wizard -->
                 <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="hover:text-gold transition flex items-center gap-1.5 text-slate-700">
                     <i class="fas fa-headset text-gold"></i> Cấu Hình Chat
                 </a>
@@ -118,19 +116,13 @@
                     <p class="text-slate-600 mt-2">Tìm kiếm nhanh hoặc chọn lọc danh mục sản phẩm bạn quan tâm.</p>
                 </div>
 
-                <!-- Search & Filter Bar -->
+                <!-- Search & Dynamic Category Filter Bar -->
                 <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-10 flex flex-col md:flex-row gap-4 justify-between items-center">
                     <div class="relative w-full md:w-96">
                         <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
                         <input type="text" id="search-input" oninput="filterProducts()" placeholder="Nhập tên sản phẩm cần tìm..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
                     </div>
-                    <div class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end">
-                        <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold transition">Tất Cả</button>
-                        <button onclick="filterCategory('gianphoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Giàn Phơi</button>
-                        <button onclick="filterCategory('cualuoi')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Cửa Lưới</button>
-                        <button onclick="filterCategory('luoiantoan')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Lưới An Toàn</button>
-                        <button onclick="filterCategory('bat')" class="cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition">Bạt Che & Khác</button>
-                    </div>
+                    <div id="category-buttons-container" class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end"></div>
                 </div>
 
                 <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
@@ -282,14 +274,94 @@
 
     <!-- Modal Quản Lý (Admin Dashboard) -->
     <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-slate-900 text-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
             <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
-            <h3 class="text-2xl font-bold text-gold mb-2"><i class="fas fa-cog mr-2"></i>Bảng Quản Lý Sản Phẩm & Hình Ảnh</h3>
-            <p class="text-slate-400 text-sm mb-6">Chỉnh sửa giá tiền, thông số, 5 hình ảnh minh họa cho từng sản phẩm.</p>
-            <div id="admin-product-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2"></div>
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-slate-800 pb-4">
+                <div>
+                    <h3 class="text-2xl font-bold text-gold"><i class="fas fa-cog mr-2"></i>Hệ Thống Quản Trị Minh Phát</h3>
+                    <p class="text-slate-400 text-xs mt-1">Thêm sản phẩm mới, quản lý danh mục, hình ảnh và danh sách đơn hàng.</p>
+                </div>
+                <div class="flex flex-wrap gap-2 bg-slate-800 p-1 rounded-xl">
+                    <button onclick="switchAdminTab('categories')" id="tab-btn-categories" class="px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition">Quản Lý Danh Mục</button>
+                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition">Quản Lý Sản Phẩm</button>
+                    <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition">Đơn Hàng (<span id="admin-order-count">0</span>)</button>
+                </div>
+            </div>
+
+            <!-- Tab 1: Quản Lý Danh Mục -->
+            <div id="admin-tab-categories" class="hidden space-y-6 max-h-[60vh] overflow-y-auto pr-2">
+                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 flex gap-3 items-center">
+                    <input type="text" id="new-cat-name" placeholder="Tên danh mục mới (Ví dụ: Khóa điện tử)" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+                    <button onclick="addNewCategory()" class="px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-sm hover:bg-gold-light transition whitespace-nowrap"><i class="fas fa-plus mr-1"></i> Thêm danh mục</button>
+                </div>
+                <div id="admin-categories-list" class="space-y-3"></div>
+            </div>
+
+            <!-- Tab 2: Sản Phẩm (Thêm mới + Chỉnh sửa danh sách) -->
+            <div id="admin-tab-products" class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
+                <div class="bg-gold/10 p-4 rounded-2xl border border-gold/40 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-gold text-sm">Thêm sản phẩm mới vào danh mục</h4>
+                        <p class="text-slate-400 text-xs">Tạo sản phẩm mới và điền đầy đủ thông tin bên dưới.</p>
+                    </div>
+                    <button onclick="openAddProductModal()" class="px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-sm hover:bg-gold-light transition shadow whitespace-nowrap"><i class="fas fa-plus mr-1"></i> + Thêm sản phẩm mới</button>
+                </div>
+                <div id="admin-product-container" class="space-y-4"></div>
+            </div>
+
+            <!-- Tab 3: Đơn Hàng -->
+            <div id="admin-tab-orders" class="hidden space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <div id="admin-order-container" class="space-y-4"></div>
+            </div>
+
             <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-4">
-                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Lưu Lại Tất Cả</button>
+                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Lưu Lại Thay Đổi</button>
                 <button onclick="closeAdminModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Thêm Sản Phẩm Mới (Riêng biệt để thao tác nhanh) -->
+    <div id="add-product-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
+            <button onclick="closeAddProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-2xl font-bold text-gold mb-4"><i class="fas fa-plus-circle mr-2"></i>Thêm Sản Phẩm Mới</h3>
+            
+            <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">Tên sản phẩm:</label>
+                    <input type="text" id="new-prod-title" placeholder="Ví dụ: Giàn phơi điện tử cao cấp..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs text-slate-400 block mb-1">Danh mục:</label>
+                        <select id="new-prod-cat" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm"></select>
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400 block mb-1">Giá sản phẩm:</label>
+                        <input type="text" id="new-prod-price" placeholder="Ví dụ: Từ 1.200.000đ" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">Mô tả chi tiết:</label>
+                    <textarea id="new-prod-desc" rows="3" placeholder="Nhập mô tả sản phẩm..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm"></textarea>
+                </div>
+                <div>
+                    <label class="text-xs text-slate-400 block mb-1">Link Ảnh Chính (Ảnh 1):</label>
+                    <div class="flex gap-2 items-center">
+                        <input type="text" id="new-prod-img1" class="flex-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-xs" placeholder="Nhập link ảnh hoặc chọn file từ máy">
+                        <label class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer whitespace-nowrap">
+                            <i class="fas fa-upload mr-1"></i> Chọn file
+                            <input type="file" accept="image/*" class="hidden" onchange="handleFileSelect(event, 'new-prod-img1')">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-3">
+                <button onclick="createNewProductSubmit()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Xác Nhận Thêm</button>
+                <button onclick="closeAddProductModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Hủy</button>
             </div>
         </div>
     </div>
@@ -320,6 +392,13 @@
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].style.opacity = '1';
         }, 4000);
+
+        let defaultCategories = [
+            { id: 'gianphoi', name: 'Giàn Phơi' },
+            { id: 'cualuoi', name: 'Cửa Lưới' },
+            { id: 'luoiantoan', name: 'Lưới An Toàn' },
+            { id: 'bat', name: 'Bạt Che & Khác' }
+        ];
 
         let defaultProducts = [
             {
@@ -611,13 +690,26 @@
             { id: 4, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_v9')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v9')) || defaultVideos;
-        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v9')) || [];
+        let categories = JSON.parse(localStorage.getItem('minhphat_categories_v13')) || defaultCategories;
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v13')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v13')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v13')) || [];
+        let orders = JSON.parse(localStorage.getItem('minhphat_orders_v13')) || [];
         let activeCategory = 'all';
         let currentDetailProduct = null;
 
+        function renderCategoryButtons() {
+            const container = document.getElementById('category-buttons-container');
+            container.innerHTML = `<button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl ${activeCategory === 'all' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-sm font-semibold transition">Tất Cả</button>`;
+            
+            categories.forEach(cat => {
+                const isActive = activeCategory === cat.id;
+                container.innerHTML += `<button onclick="filterCategory('${cat.id}')" class="cat-btn px-4 py-2 rounded-xl ${isActive ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-sm font-semibold transition">${cat.name}</button>`;
+            });
+        }
+
         function renderProducts() {
+            renderCategoryButtons();
             const grid = document.getElementById('product-grid');
             const keyword = document.getElementById('search-input').value.toLowerCase();
             grid.innerHTML = '';
@@ -661,10 +753,6 @@
 
         function filterCategory(cat) {
             activeCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold hover:bg-slate-200 transition";
-            });
-            event.target.className = "cat-btn px-4 py-2 rounded-xl bg-primary text-white text-sm font-semibold transition";
             renderProducts();
         }
 
@@ -712,12 +800,16 @@
 
             const sublist = document.getElementById('detail-sublist');
             sublist.innerHTML = '';
-            p.subFolders.forEach(sub => {
-                const li = document.createElement('li');
-                li.className = 'flex items-center gap-2';
-                li.innerHTML = `<i class="fas fa-check-circle text-gold"></i> <span>${sub}</span>`;
-                sublist.appendChild(li);
-            });
+            if(p.subFolders && p.subFolders.length > 0) {
+                p.subFolders.forEach(sub => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-center gap-2';
+                    li.innerHTML = `<i class="fas fa-check-circle text-gold"></i> <span>${sub}</span>`;
+                    sublist.appendChild(li);
+                });
+            } else {
+                sublist.innerHTML = `<li class="text-slate-500 text-sm">Chính hãng chất lượng cao, lắp đặt trọn gói.</li>`;
+            }
 
             document.getElementById('home-view').classList.add('hidden');
             document.getElementById('detail-view').classList.remove('hidden');
@@ -742,7 +834,7 @@
         function addToCartFromDetail() {
             if(!currentDetailProduct) return;
             cart.push(currentDetailProduct);
-            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v13', JSON.stringify(cart));
             updateCartCount();
             showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
         }
@@ -781,7 +873,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v13', JSON.stringify(cart));
             updateCartCount();
             openCartModal();
         }
@@ -794,9 +886,26 @@
                 alert("Vui lòng điền đầy đủ thông tin họ tên, số điện thoại và địa chỉ!");
                 return;
             }
-            alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
+            if(cart.length === 0) {
+                alert("Giỏ hàng của bạn đang trống! Vui lòng chọn sản phẩm trước khi đặt.");
+                return;
+            }
+
+            const newOrder = {
+                id: 'DH' + Date.now().toString().slice(-6),
+                name: name,
+                phone: phone,
+                address: address,
+                items: [...cart],
+                time: new Date().toLocaleString('vi-VN')
+            };
+
+            orders.push(newOrder);
+            localStorage.setItem('minhphat_orders_v13', JSON.stringify(orders));
+
+            alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ liên hệ lại qua số ${phone} ngay lập tức.`);
             cart = [];
-            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v13', JSON.stringify(cart));
             updateCartCount();
             closeCartModal();
         }
@@ -822,24 +931,276 @@
         }
 
         function openAdminModal() {
-            const container = document.getElementById('admin-product-container');
-            container.innerHTML = '';
-            products.forEach((p, index) => {
-                container.innerHTML += `
-                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
-                        <h5 class="font-bold text-gold text-xs">Sản phẩm ${index + 1}</h5>
-                        <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Tên">
-                        <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Giá">
-                        <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Mô tả">${p.desc}</textarea>
-                        <input type="text" id="admin-img1-${p.id}" value="${p.images[0]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 1">
-                        <input type="text" id="admin-img2-${p.id}" value="${p.images[1]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 2">
-                        <input type="text" id="admin-img3-${p.id}" value="${p.images[2]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 3">
-                        <input type="text" id="admin-img4-${p.id}" value="${p.images[3]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 4">
-                        <input type="text" id="admin-img5-${p.id}" value="${p.images[4]}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm" placeholder="Link ảnh 5">
+            renderAdminCategories();
+            renderAdminProducts();
+            renderAdminOrders();
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function switchAdminTab(tabName) {
+            const catTab = document.getElementById('admin-tab-categories');
+            const prodTab = document.getElementById('admin-tab-products');
+            const ordTab = document.getElementById('admin-tab-orders');
+            
+            const catBtn = document.getElementById('tab-btn-categories');
+            const prodBtn = document.getElementById('tab-btn-products');
+            const ordBtn = document.getElementById('tab-btn-orders');
+
+            catTab.classList.add('hidden');
+            prodTab.classList.add('hidden');
+            ordTab.classList.add('hidden');
+            catBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
+            prodBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
+            ordBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
+
+            if(tabName === 'categories') {
+                catTab.classList.remove('hidden');
+                catBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+            } else if(tabName === 'products') {
+                prodTab.classList.remove('hidden');
+                prodBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+            } else {
+                ordTab.classList.remove('hidden');
+                ordBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+            }
+        }
+
+        function renderAdminCategories() {
+            const listContainer = document.getElementById('admin-categories-list');
+            listContainer.innerHTML = '';
+            categories.forEach((cat, index) => {
+                listContainer.innerHTML += `
+                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-700 flex justify-between items-center gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-slate-400 font-bold">#${index+1}</span>
+                            <input type="text" id="cat-name-${cat.id}" value="${cat.name}" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm" onchange="updateCategoryName('${cat.id}', this.value)">
+                            <span class="text-xs text-slate-500 font-mono">(ID: ${cat.id})</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <button onclick="moveCategory(${index}, -1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs" title="Di chuyển lên"><i class="fas fa-arrow-up"></i></button>
+                            <button onclick="moveCategory(${index}, 1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs" title="Di chuyển xuống"><i class="fas fa-arrow-down"></i></button>
+                            <button onclick="deleteCategory('${cat.id}')" class="w-8 h-8 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white flex items-center justify-center text-xs transition" title="Xóa danh mục"><i class="fas fa-trash"></i></button>
+                        </div>
                     </div>
                 `;
             });
-            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function addNewCategory() {
+            const nameInput = document.getElementById('new-cat-name');
+            const name = nameInput.value.trim();
+            if(!name) {
+                alert("Vui lòng nhập tên danh mục mới!");
+                return;
+            }
+            const id = 'cat_' + Date.now().toString().slice(-6);
+            categories.push({ id: id, name: name });
+            nameInput.value = '';
+            renderAdminCategories();
+            showToast("Đã thêm danh mục mới!");
+        }
+
+        function updateCategoryName(id, newName) {
+            const cat = categories.find(c => c.id === id);
+            if(cat) cat.name = newName;
+        }
+
+        function moveCategory(index, direction) {
+            const newIndex = index + direction;
+            if(newIndex < 0 || newIndex >= categories.length) return;
+            const temp = categories[index];
+            categories[index] = categories[newIndex];
+            categories[newIndex] = temp;
+            renderAdminCategories();
+        }
+
+        function deleteCategory(id) {
+            if(categories.length <= 1) {
+                alert("Cần giữ lại ít nhất một danh mục sản phẩm!");
+                return;
+            }
+            if(confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
+                categories = categories.filter(c => c.id !== id);
+                renderAdminCategories();
+                showToast("Đã xóa danh mục!");
+            }
+        }
+
+        function openAddProductModal() {
+            const selectCat = document.getElementById('new-prod-cat');
+            selectCat.innerHTML = '';
+            categories.forEach(c => {
+                selectCat.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+            });
+            document.getElementById('new-prod-title').value = '';
+            document.getElementById('new-prod-price').value = '';
+            document.getElementById('new-prod-desc').value = '';
+            document.getElementById('new-prod-img1').value = '';
+            document.getElementById('add-product-modal').classList.remove('hidden');
+        }
+
+        function closeAddProductModal() {
+            document.getElementById('add-product-modal').classList.add('hidden');
+        }
+
+        function createNewProductSubmit() {
+            const title = document.getElementById('new-prod-title').value.trim();
+            const category = document.getElementById('new-prod-cat').value;
+            const price = document.getElementById('new-prod-price').value.trim() || "Liên hệ giá tốt nhất";
+            const desc = document.getElementById('new-prod-desc').value.trim() || "Sản phẩm chất lượng cao chính hãng Minh Phát.";
+            const img1 = document.getElementById('new-prod-img1').value.trim() || "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80";
+
+            if(!title) {
+                alert("Vui lòng nhập tên sản phẩm!");
+                return;
+            }
+
+            const newProd = {
+                id: Date.now(),
+                category: category,
+                title: title,
+                price: price,
+                desc: desc,
+                subFolders: ["Chính hãng 100%", "Bảo hành tận nơi", "Lắp đặt trọn gói"],
+                images: [img1, img1, img1, img1, img1]
+            };
+
+            products.unshift(newProd);
+            localStorage.setItem('minhphat_products_v13', JSON.stringify(products));
+            renderAdminProducts();
+            renderProducts();
+            closeAddProductModal();
+            showToast("Đã thêm sản phẩm mới thành công!");
+        }
+
+        function renderAdminProducts() {
+            const container = document.getElementById('admin-product-container');
+            container.innerHTML = '';
+            products.forEach((p, index) => {
+                let imgInputsHTML = '';
+                for(let i=0; i<5; i++) {
+                    let imgVal = p.images[i] || '';
+                    imgInputsHTML += `
+                        <div class="space-y-1">
+                            <label class="text-xs text-slate-400">Ảnh ${i+1}:</label>
+                            <div class="flex gap-2 items-center">
+                                <input type="text" id="admin-img${i+1}-${p.id}" value="${imgVal}" class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs" placeholder="Link ảnh hoặc chọn file">
+                                <label class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer whitespace-nowrap">
+                                    <i class="fas fa-upload mr-1"></i> Chọn file
+                                    <input type="file" accept="image/*" class="hidden" onchange="handleFileSelect(event, 'admin-img${i+1}-${p.id}')">
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let catOptionsHTML = '';
+                categories.forEach(c => {
+                    const selected = p.category === c.id ? 'selected' : '';
+                    catOptionsHTML += `<option value="${c.id}" ${selected}>${c.name}</option>`;
+                });
+
+                container.innerHTML += `
+                    <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 space-y-4">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                            <h5 class="font-bold text-gold text-sm">Sản phẩm #${index + 1}: ${p.title}</h5>
+                            <button onclick="deleteProduct(${p.id})" class="text-red-400 hover:text-red-300 text-xs"><i class="fas fa-trash"></i> Xóa SP</button>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="sm:col-span-2">
+                                <label class="text-xs text-slate-400 block mb-1">Tên sản phẩm:</label>
+                                <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                            </div>
+                            <div>
+                                <label class="text-xs text-slate-400 block mb-1">Danh mục:</label>
+                                <select id="admin-cat-${p.id}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">${catOptionsHTML}</select>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs text-slate-400 block mb-1">Giá:</label>
+                                <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="text-xs text-slate-400 block mb-1">Mô tả chi tiết:</label>
+                            <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">${p.desc}</textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-700">
+                            ${imgInputsHTML}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteProduct(id) {
+            if(confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+                products = products.filter(p => p.id !== id);
+                renderAdminProducts();
+                showToast("Đã xóa sản phẩm!");
+            }
+        }
+
+        function renderAdminOrders() {
+            const container = document.getElementById('admin-order-container');
+            document.getElementById('admin-order-count').innerText = orders.length;
+            container.innerHTML = '';
+            
+            if(orders.length === 0) {
+                container.innerHTML = `<div class="text-center py-10 text-slate-400">Chưa có đơn hàng nào được đặt.</div>`;
+                return;
+            }
+
+            orders.forEach((ord, index) => {
+                let itemsList = '';
+                ord.items.forEach(item => {
+                    itemsList += `<li class="text-xs text-slate-300">- ${item.title} (${item.price})</li>`;
+                });
+
+                container.innerHTML += `
+                    <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 space-y-3">
+                        <div class="flex justify-between items-center border-b border-slate-700 pb-2">
+                            <span class="font-bold text-gold text-sm"><i class="fas fa-receipt mr-1"></i> Mã đơn: ${ord.id}</span>
+                            <span class="text-xs text-slate-400">${ord.time}</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm">
+                            <div><strong class="text-slate-400 text-xs block">Khách hàng:</strong> <span class="text-white">${ord.name}</span></div>
+                            <div><strong class="text-slate-400 text-xs block">Số điện thoại:</strong> <a href="tel:${ord.phone}" class="text-gold font-bold">${ord.phone}</a></div>
+                            <div><strong class="text-slate-400 text-xs block">Địa chỉ lắp đặt:</strong> <span class="text-white">${ord.address}</span></div>
+                        </div>
+                        <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
+                            <strong class="text-xs text-slate-400 block mb-1">Sản phẩm đặt lịch:</strong>
+                            <ul class="space-y-1">${itemsList}</ul>
+                        </div>
+                        <div class="flex justify-end pt-2">
+                            <button onclick="deleteOrder(${index})" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition flex items-center gap-1.5">
+                                <i class="fas fa-trash"></i> Xóa đơn hàng
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function deleteOrder(index) {
+            if(confirm("Hành động này sẽ xóa vĩnh viễn đơn hàng. Bạn có chắc chắn không?")) {
+                orders.splice(index, 1);
+                localStorage.setItem('minhphat_orders_v13', JSON.stringify(orders));
+                renderAdminOrders();
+                showToast("Đã xóa đơn hàng!");
+            }
+        }
+
+        function handleFileSelect(event, targetInputId) {
+            const file = event.target.files[0];
+            if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById(targetInputId).value = e.target.result;
+                showToast("Đã tải ảnh lên thành công!");
+            };
+            reader.readAsDataURL(file);
         }
 
         function closeAdminModal() {
@@ -848,18 +1209,26 @@
 
         function saveAdminData() {
             products.forEach(p => {
-                p.title = document.getElementById(`admin-title-${p.id}`).value;
-                p.price = document.getElementById(`admin-price-${p.id}`).value;
-                p.desc = document.getElementById(`admin-desc-${p.id}`).value;
+                const titleInput = document.getElementById(`admin-title-${p.id}`);
+                const catInput = document.getElementById(`admin-cat-${p.id}`);
+                const priceInput = document.getElementById(`admin-price-${p.id}`);
+                const descInput = document.getElementById(`admin-desc-${p.id}`);
+                
+                if(titleInput) p.title = titleInput.value;
+                if(catInput) p.category = catInput.value;
+                if(priceInput) p.price = priceInput.value;
+                if(descInput) p.desc = descInput.value;
+                
                 p.images = [
-                    document.getElementById(`admin-img1-${p.id}`).value,
-                    document.getElementById(`admin-img2-${p.id}`).value,
-                    document.getElementById(`admin-img3-${p.id}`).value,
-                    document.getElementById(`admin-img4-${p.id}`).value,
-                    document.getElementById(`admin-img5-${p.id}`).value
+                    document.getElementById(`admin-img1-${p.id}`) ? document.getElementById(`admin-img1-${p.id}`).value : p.images[0],
+                    document.getElementById(`admin-img2-${p.id}`) ? document.getElementById(`admin-img2-${p.id}`).value : p.images[1],
+                    document.getElementById(`admin-img3-${p.id}`) ? document.getElementById(`admin-img3-${p.id}`).value : p.images[2],
+                    document.getElementById(`admin-img4-${p.id}`) ? document.getElementById(`admin-img4-${p.id}`).value : p.images[3],
+                    document.getElementById(`admin-img5-${p.id}`) ? document.getElementById(`admin-img5-${p.id}`).value : p.images[4]
                 ];
             });
-            localStorage.setItem('minhphat_products_v9', JSON.stringify(products));
+            localStorage.setItem('minhphat_categories_v13', JSON.stringify(categories));
+            localStorage.setItem('minhphat_products_v13', JSON.stringify(products));
             renderProducts();
             closeAdminModal();
             alert("Đã lưu thay đổi thành công!");
