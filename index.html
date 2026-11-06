@@ -64,6 +64,10 @@
                 <a href="#products" onclick="showHome()" class="hover:text-gold transition">Sản Phẩm</a>
                 <a href="#videos" onclick="showHome()" class="hover:text-gold transition">Video Thực Tế</a>
                 <a href="#pricing" onclick="showHome()" class="hover:text-gold transition">Bảng Giá</a>
+                <!-- Nút truy cập nhanh Bảng điều khiển Tawk.to Wizard -->
+                <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="hover:text-gold transition flex items-center gap-1.5 text-slate-700">
+                    <i class="fas fa-headset text-gold"></i> Cấu Hình Chat
+                </a>
                 <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition flex items-center gap-2 text-sm shadow">
                     <i class="fas fa-lock"></i> Quản Lý (Admin)
                 </button>
@@ -132,7 +136,7 @@
                 <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </section>
 
-            <!-- Video Section (Cập nhật 4 mục video theo yêu cầu) -->
+            <!-- Video Section -->
             <section id="videos" class="py-16 bg-white border-t border-slate-200">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-12">
@@ -294,6 +298,7 @@
     <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
         <a href="https://zalo.me/0967220838" target="_blank" class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-xl flex items-center justify-center font-bold text-sm" title="Chat Zalo">ZALO</a>
         <a href="https://www.facebook.com/gianphoicualuoiminhphat68" target="_blank" class="w-14 h-14 bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center text-2xl" title="Chat Messenger"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="w-14 h-14 bg-cyan-600 text-white rounded-full shadow-xl flex items-center justify-center text-xl font-bold" title="Cấu hình Tawk.to Chat Wizard"><i class="fas fa-headset"></i></a>
         <a href="tel:0967220838" class="w-14 h-14 bg-gold text-slate-950 rounded-full shadow-xl flex items-center justify-center text-xl" title="Gọi Ngay"><i class="fas fa-phone-alt"></i></a>
     </div>
 
@@ -599,7 +604,6 @@
             }
         ];
 
-        // Cập nhật 4 mục video theo yêu cầu: Giàn phơi gắn trần, Giàn phơi xếp ngang, Giàn phơi điện tử, Cửa lưới chống muỗi
         let defaultVideos = [
             { id: 1, title: "Video Lắp Đặt Giàn Phơi Gắn Trần Thực Tế", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
             { id: 2, title: "Video Lắp Đặt Giàn Phơi Xếp Ngang Thực Tế", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
@@ -607,9 +611,9 @@
             { id: 4, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_v8')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v8')) || defaultVideos;
-        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v8')) || [];
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v9')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v9')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v9')) || [];
         let activeCategory = 'all';
         let currentDetailProduct = null;
 
@@ -738,7 +742,7 @@
         function addToCartFromDetail() {
             if(!currentDetailProduct) return;
             cart.push(currentDetailProduct);
-            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
             updateCartCount();
             showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
         }
@@ -777,7 +781,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
             updateCartCount();
             openCartModal();
         }
@@ -792,7 +796,7 @@
             }
             alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
             cart = [];
-            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v9', JSON.stringify(cart));
             updateCartCount();
             closeCartModal();
         }
@@ -855,7 +859,7 @@
                     document.getElementById(`admin-img5-${p.id}`).value
                 ];
             });
-            localStorage.setItem('minhphat_products_v8', JSON.stringify(products));
+            localStorage.setItem('minhphat_products_v9', JSON.stringify(products));
             renderProducts();
             closeAdminModal();
             alert("Đã lưu thay đổi thành công!");
