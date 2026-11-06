@@ -516,7 +516,7 @@
             {
                 id: 23, category: "gianphoi",
                 title: "23. Giàn Phơi Xếp Tường Tải Trọng Lớn 50kg",
-                price: "From 1.050.000đ",
+                price: "Từ 1.050.000đ",
                 desc: "Khung nhôm dày bản lớn chịu tải trọng phơi lên đến 50kg.",
                 subFolders: ["Tải Trọng Phơi 50kg", "Thanh Phơi Dày Chống Võng", "Độ Bền 10 Năm"],
                 images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"]
@@ -634,9 +634,9 @@
             { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_v6')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v6')) || defaultVideos;
-        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v6')) || [];
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v7')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v7')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v7')) || [];
         let activeCategory = 'all';
         let currentDetailProduct = null;
 
@@ -765,7 +765,7 @@
         function addToCartFromDetail() {
             if(!currentDetailProduct) return;
             cart.push(currentDetailProduct);
-            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
             updateCartCount();
             showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
         }
@@ -804,7 +804,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
             updateCartCount();
             openCartModal();
         }
@@ -819,7 +819,7 @@
             }
             alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
             cart = [];
-            localStorage.setItem('minhphat_cart_v6', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
             updateCartCount();
             closeCartModal();
         }
@@ -882,7 +882,7 @@
                     document.getElementById(`admin-img5-${p.id}`).value
                 ];
             });
-            localStorage.setItem('minhphat_products_v6', JSON.stringify(products));
+            localStorage.setItem('minhphat_products_v7', JSON.stringify(products));
             renderProducts();
             closeAdminModal();
             alert("Đã lưu thay đổi thành công!");
@@ -893,6 +893,19 @@
             renderVideos();
             updateCartCount();
         };
+    </script>
+
+    <!-- Tawk.to Live Chat Script Integration -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
