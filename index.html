@@ -11,17 +11,8 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: {
-                            DEFAULT: '#1e3a8a', // Deep Blue (Xanh dương đậm từ logo)
-                            dark: '#172554',
-                            light: '#dbeafe'
-                        },
-                        gold: {
-                            DEFAULT: '#d97706', // Gold/Bronze (Vàng đồng từ logo)
-                            light: '#fef3c7',
-                            dark: '#b45309'
-                        },
-                        darkBg: '#0f172a'
+                        primary: { DEFAULT: '#1e3a8a', dark: '#172554', light: '#dbeafe' },
+                        gold: { DEFAULT: '#d97706', light: '#fef3c7', dark: '#b45309' }
                     }
                 }
             }
@@ -32,17 +23,13 @@
     <!-- Google Font Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
         @keyframes pulse-ring {
             0% { transform: scale(0.95); opacity: 0.8; }
             50% { transform: scale(1.15); opacity: 0.4; }
             100% { transform: scale(0.95); opacity: 0.8; }
         }
-        .float-badge {
-            animation: pulse-ring 2s infinite ease-in-out;
-        }
+        .float-badge { animation: pulse-ring 2s infinite ease-in-out; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
@@ -52,14 +39,11 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center gap-4">
                 <span><i class="fas fa-map-marker-alt text-gold mr-1"></i> Phục vụ tận nơi tại TP.HCM & Toàn Quốc</span>
-                <span class="hidden md:inline"><i class="fas fa-clock text-gold mr-1"></i> 8:00 - 21:00 (Thứ 2 - Chủ Nhật)</span>
             </div>
             <div class="flex items-center gap-4 flex-wrap justify-center">
                 <a href="tel:0967220838" class="hover:text-gold font-semibold transition"><i class="fas fa-phone-alt text-gold mr-1"></i> 0967 220 838</a>
                 <span class="text-gold">-</span>
                 <a href="tel:0879319345" class="hover:text-gold font-semibold transition">0879 319 345</a>
-                <span class="hidden sm:inline">|</span>
-                <span class="text-gold font-medium"><i class="fas fa-shield-alt mr-1"></i> Bảo hành đến 5 năm</span>
             </div>
         </div>
     </div>
@@ -68,10 +52,9 @@
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo & Brand -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 rounded-xl bg-slate-900 border border-gold/50 flex items-center justify-center shadow-md overflow-hidden group-hover:scale-105 transition p-1">
-                        <div class="text-gold font-extrabold text-[10px] text-center tracking-tighter leading-tight">MINH<br>PHÁT</div>
+                    <div class="w-12 h-12 rounded-xl bg-slate-900 border border-gold/50 flex items-center justify-center shadow-md overflow-hidden p-1">
+                        <div class="text-gold font-extrabold text-[10px] text-center leading-tight">MINH<br>PHÁT</div>
                     </div>
                     <div>
                         <span class="text-xl sm:text-2xl font-extrabold text-primary tracking-wide">MINH PHÁT</span>
@@ -79,38 +62,22 @@
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
                 <nav class="hidden lg:flex items-center gap-8 font-medium text-slate-700">
                     <a href="#home" class="text-primary font-semibold hover:text-gold transition">Trang Chủ</a>
                     <a href="#about" class="hover:text-gold transition">Về Chúng Tôi</a>
                     <a href="#products" class="hover:text-gold transition">Sản Phẩm</a>
                     <a href="#pricing" class="hover:text-gold transition">Bảng Giá</a>
-                    <a href="#advantages" class="hover:text-gold transition">Ưu Điểm</a>
-                    <a href="#contact" class="hover:text-gold transition">Liên Hệ</a>
+                    <button onclick="openAdminModal()" class="px-4 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold/80 transition flex items-center gap-2 text-sm shadow">
+                        <i class="fas fa-cog"></i> Quản Lý Danh Mục & Hình Ảnh
+                    </button>
                 </nav>
 
-                <!-- CTA Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <a href="tel:0967220838" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow-md shadow-primary/20 hover:opacity-95 transition flex items-center gap-2 border border-gold/40">
+                <div class="flex items-center gap-3">
+                    <a href="tel:0967220838" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow-md hover:opacity-95 transition flex items-center gap-2 border border-gold/40">
                         <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
                     </a>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="menu-btn" class="lg:hidden text-slate-800 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
             </div>
-        </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
-            <a href="#home" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium text-primary">Trang Chủ</a>
-            <a href="#about" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Về Chúng Tôi</a>
-            <a href="#products" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Sản Phẩm</a>
-            <a href="#pricing" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Bảng Giá</a>
-            <a href="#advantages" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Ưu Điểm</a>
-            <a href="#contact" class="block px-3 py-2 rounded-lg hover:bg-slate-50 font-medium">Liên Hệ</a>
         </div>
     </header>
 
@@ -132,9 +99,9 @@
                         <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition text-center flex items-center justify-center gap-2">
                             <i class="fas fa-boxes"></i> Xem 7 Hạng Mục Sản Phẩm
                         </a>
-                        <a href="tel:0967220838" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition text-center flex items-center justify-center gap-2 backdrop-blur-sm">
-                            <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
-                        </a>
+                        <button onclick="openAdminModal()" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition text-center flex items-center justify-center gap-2 backdrop-blur-sm">
+                            <i class="fas fa-edit text-gold"></i> Thêm/Sửa Danh Mục & Ảnh
+                        </button>
                     </div>
                 </div>
                 <div class="relative flex justify-center">
@@ -154,8 +121,342 @@
         </div>
     </section>
 
-    <!-- Products Section (7 Hạng Mục với Thư Mục Con & Hình Ảnh) -->
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Về Thương Hiệu Minh Phát</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Giàn Phơi & Cửa Lưới Minh Phát</h2>
+                <p class="text-slate-600 mt-4 text-base">Chúng tôi chuyên cung cấp giải pháp toàn diện nâng tầm không gian sống với các sản phẩm cơ khí và nội thất thông minh chất lượng cao tại TP.HCM và toàn quốc.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section (7 Hạng Mục động) -->
     <section id="products" class="py-16 bg-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">7 Hạng Mục Sản Phẩm Chính</h2>
+                <p class="text-slate-600 mt-4 text-base">Bấm vào nút bên dưới mỗi sản phẩm để xem chi tiết thư mục con và hình ảnh thực tế.</p>
+                <div class="mt-4">
+                    <button onclick="openAdminModal()" class="px-6 py-3 rounded-xl bg-primary text-white font-semibold hover:bg-slate-900 transition shadow">
+                        <i class="fas fa-folder-plus text-gold mr-2"></i> Mở Bảng Quản Lý Thư Mục & Tải Ảnh Lên
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid sản phẩm hiển thị từ JavaScript -->
+            <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Nội dung được render tự động -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Bảng Giá Dịch Vụ</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Báo Giá Tham Khảo Trọn Gói</h2>
+                <p class="text-slate-600 mt-4 text-base">Giá đã bao gồm chi phí vận chuyển và lắp đặt hoàn thiện tận nơi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-4">Gói Cơ Bản</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Giàn Phơi & Lưới An Toàn</h3>
+                        <div class="text-3xl font-black text-gold my-4">Liên hệ tốt nhất</div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Giàn phơi quay tay gắn trần</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Lưới an toàn ban công tiêu chuẩn</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Miễn phí lắp đặt trọn gói</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
+                </div>
+
+                <div class="bg-slate-900 text-white p-8 rounded-3xl border-2 border-gold flex flex-col justify-between shadow-2xl relative">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-slate-950 font-black text-xs px-4 py-1 rounded-full uppercase">Phổ Biến Nhất</div>
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 px-3 py-1 rounded-full inline-block mb-4">Gói Combo Gia Đình</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Giàn Phơi Điện Tử & Cửa Lưới</h3>
+                        <div class="text-3xl font-black text-gold my-4">Ưu đãi đặc biệt</div>
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Giàn phơi thông minh điện tử cao cấp</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Cửa chống muỗi hệ xếp / tự cuốn</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bảo hành chính hãng 5 năm</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-gold text-slate-950 font-bold text-center hover:bg-gold-light transition">Gọi 0967.220.838</a>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full inline-block mb-4">Gói Toàn Diện</div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Bạt Che & Cửa Xếp Nhôm Nhựa</h3>
+                        <div class="text-3xl font-black text-gold my-4">Giá xưởng tốt nhất</div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li><i class="fas fa-check text-gold mr-2"></i> Bạt che nắng mưa / mái hiên / bạt xếp</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Cửa xếp lá nhôm / lá nhựa</li>
+                            <li><i class="fas fa-check text-gold mr-2"></i> Đo đạc tận nơi chính xác</li>
+                        </ul>
+                    </div>
+                    <a href="tel:0967220838" class="w-full py-3 rounded-xl bg-primary text-white font-bold text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Thư Mục Con & Hình Ảnh -->
+    <div id="subfolder-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold/40">
+            <button onclick="closeSubFolderModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-gold font-bold text-xs uppercase tracking-wider mb-1">Thư Mục Con & Hình Ảnh Thực Tế</div>
+            <h3 id="modal-category-title" class="text-2xl font-bold text-white mb-4">Tên Hạng Mục</h3>
+            
+            <div class="mb-6 rounded-2xl overflow-hidden border border-slate-700 h-56 bg-slate-800 flex items-center justify-center">
+                <img id="modal-img" src="" alt="Hình ảnh sản phẩm Minh Phát" class="w-full h-full object-cover">
+            </div>
+
+            <div class="mb-6">
+                <h4 class="text-sm font-semibold text-slate-300 mb-2"><i class="fas fa-folder text-gold mr-2"></i>Các Mẫu / Thư Mục Con:</h4>
+                <ul id="modal-sublist" class="space-y-2 text-sm text-slate-200 bg-slate-800/80 p-4 rounded-xl border border-slate-700"></ul>
+            </div>
+
+            <div class="flex gap-4">
+                <a href="tel:0967220838" class="flex-1 py-3 rounded-xl bg-gold text-slate-950 font-bold text-center shadow hover:bg-gold-light transition flex items-center justify-center gap-2">
+                    <i class="fas fa-phone-alt"></i> Tư Vấn Lắp Đặt: 0967.220.838
+                </a>
+                <button onclick="closeSubFolderModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Quản Lý & Thêm/Sửa Thư Mục, Chèn Hình Ảnh -->
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-gold mb-2"><i class="fas fa-cog mr-2"></i>Bảng Quản Lý & Chỉnh Sửa Danh Mục</h3>
+            <p class="text-slate-400 text-sm mb-6">Bạn có thể sửa tên, mô tả, thêm thư mục con và tải hình ảnh lên cho từng hạng mục.</p>
+            
+            <div class="space-y-6 max-h-[60vh] overflow-y-auto pr-2" id="admin-form-container">
+                <!-- Render các form chỉnh sửa qua JS -->
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-4">
+                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">
+                    <i class="fas fa-save mr-2"></i> Lưu Lại Thay Đổi
+                </button>
+                <button onclick="closeAdminModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">
+                    Đóng
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contacts (Zalo, Messenger, Call) -->
+    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
+        <a href="https://zalo.me/0967220838" target="_blank" class="group relative flex items-center justify-center w-14 h-14 bg-blue-600 text-white rounded-full shadow-xl hover:bg-blue-700 transition transform hover:scale-110 float-badge" title="Chat Zalo">
+            <span class="font-extrabold text-sm tracking-tighter">ZALO</span>
+        </a>
+        <a href="https://www.facebook.com/gianphoicualuoiminhphat68" target="_blank" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-tr from-sky-500 to-blue-600 text-white rounded-full shadow-xl hover:opacity-90 transition transform hover:scale-110" title="Chat Messenger">
+            <i class="fab fa-facebook-messenger text-2xl"></i>
+        </a>
+        <a href="tel:0967220838" class="group relative flex items-center justify-center w-14 h-14 bg-gold text-slate-950 rounded-full shadow-xl hover:bg-gold-light transition transform hover:scale-110" title="Gọi Ngay">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
+        <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
+    </footer>
+
+    <!-- JavaScript Xử Lý Động -->
+    <script>
+        // Dữ liệu mặc định 7 hạng mục sản phẩm
+        let defaultProducts = [
+            {
+                id: 1,
+                title: "1. Giàn Phơi Thông Minh Điện Tử",
+                desc: "Điều khiển từ xa thông minh, tích hợp đèn UV diệt khuẩn, quạt sấy khô quần áo và cảm biến tự dừng.",
+                subFolders: ["Mẫu Điều Khiển Từ Xa 1 Thanh Cao Cấp", "Mẫu Tích Hợp Đèn UV & Quạt Sấy Khô", "Mẫu Gắn Trần Chống Rơi Thông Minh"],
+                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                title: "2. Giàn Phơi Quay Tay Gắn Trần",
+                desc: "Cơ cấu quay hãm vòng bi tự động nhẹ nhàng, giúp nâng hạ thanh phơi dễ dàng đón nắng toàn diện.",
+                subFolders: ["Mẫu Quay Tay Inox 304 Không Gỉ", "Mẫu Hợp Kim Nhôm Bạc Sáng Bóng", "Mẫu Hợp Kim Sơn Vàng Đồng Sang Trọng"],
+                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                title: "3. Giàn Phơi Xếp Ngang Gắn Tường",
+                desc: "Thiết kế gắn tường kéo ra khi phơi và xếp gọn sát tường khi không dùng. Phù hợp khu vực hẹp.",
+                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm", "Mẫu Xếp Gắn Tường Inox Kéo Giãn"],
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                title: "4. Lưới An Toàn Ban Công / Cửa Sổ",
+                desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở nhà cao tầng. Tầm nhìn thoáng, không che khuất.",
+                subFolders: ["Lưới An Toàn Cáp Inox 2.5mm", "Lưới An Toàn Cáp Inox 3.0mm Bọc Nhựa Trong Suốt"],
+                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                title: "5. Cửa Chống Muỗi (Xếp Lùa & Tự Cuốn)",
+                desc: "Ngăn chặn hiệu quả muỗi, ruồi và côn trùng. Lưới sợi thủy tinh/inox cao cấp.",
+                subFolders: ["Hệ Cửa Xếp Lùa Khung Nhôm Sơn Tĩnh Điện", "Hệ Cửa Tự Cuốn Lò Xo Tiện Lợi", "Hệ Cửa Lưới Cố Định"],
+                image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 6,
+                title: "6. Cửa Xếp Lá Nhôm, Lá Nhựa",
+                desc: "Giải pháp vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa hiện đại, tiết kiệm diện tích.",
+                subFolders: ["Cửa Xếp Lá Nhôm Giả Gỗ Cao Cấp", "Cửa Xếp Lá Nhựa PVC Ngăn Lạnh Điều Hòa", "Vách Ngăn Tổ Ong"],
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 7,
+                title: "7. Bạt Che Nắng Mưa / Mái Hiên / Bạt Xếp",
+                desc: "Hệ thống bạt che chuyên dụng cho ban công, hiên nhà, quán café. Chất liệu bạt PVC dày dặn, chống tia UV.",
+                subFolders: ["Bạt Che Nắng Mưa Tự Cuốn Lò Xo", "Mái Hiên Di Động Quay Tay", "Bạt Xếp Lượn Sóng Quán Café"],
+                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        // Lấy dữ liệu từ localStorage nếu có, nếu không dùng mặc định
+        let products = JSON.parse(localStorage.getItem('minhphat_products')) || defaultProducts;
+
+        // Render ra giao diện trang chủ
+        function renderProducts() {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+            products.forEach(p => {
+                const isSpan = p.id === 7 ? 'md:col-span-2 lg:col-span-3 bg-blue-50' : 'bg-white';
+                const div = document.createElement('div');
+                div.className = `${isSpan} rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-6`;
+                div.innerHTML = `
+                    <div>
+                        <div class="h-40 rounded-xl overflow-hidden mb-4 bg-slate-200">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">${p.title}</h3>
+                        <p class="text-slate-600 text-sm mb-4">${p.desc}</p>
+                    </div>
+                    <button onclick="openSubFolderModal(${p.id})" class="w-full py-2.5 bg-primary text-white rounded-xl text-sm font-semibold hover:bg-slate-900 transition flex items-center justify-center gap-2">
+                        <i class="fas fa-folder-open text-gold"></i> Xem Thư Mục Con & Hình Ảnh (${p.subFolders.length})
+                    </button>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        // Mở Modal xem chi tiết thư mục con
+        function openSubFolderModal(id) {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+            document.getElementById('modal-category-title').innerText = p.title;
+            document.getElementById('modal-img').src = p.image;
+            
+            const listEl = document.getElementById('modal-sublist');
+            listEl.innerHTML = '';
+            p.subFolders.forEach(sub => {
+                const li = document.createElement('li');
+                li.className = 'flex items-center gap-2';
+                li.innerHTML = `<i class="fas fa-check-circle text-gold text-xs"></i> <span>${sub}</span>`;
+                listEl.appendChild(li);
+            });
+
+            document.getElementById('subfolder-modal').classList.remove('hidden');
+        }
+
+        function closeSubFolderModal() {
+            document.getElementById('subfolder-modal').classList.add('hidden');
+        }
+
+        // Mở Modal Quản Lý (Admin)
+        function openAdminModal() {
+            const container = document.getElementById('admin-form-container');
+            container.innerHTML = '';
+            products.forEach((p, index) => {
+                container.innerHTML += `
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 space-y-3">
+                        <h4 class="font-bold text-gold text-sm">Hạng mục ${index + 1}</h4>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">Tên Hạng Mục</label>
+                            <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">Mô Tả</label>
+                            <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">${p.desc}</textarea>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">Thư Mục Con (các mẫu cách nhau bằng dấu phẩy)</label>
+                            <input type="text" id="admin-sub-${p.id}" value="${p.subFolders.join(', ')}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">Link Hình Ảnh (URL)</label>
+                            <input type="text" id="admin-img-${p.id}" value="${p.image}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-slate-300 mb-1">Hoặc Tải Ảnh Từ Máy Tính</label>
+                            <input type="file" accept="image/*" onchange="handleImageUpload(event, ${p.id})" class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold file:text-slate-950 hover:file:bg-gold-light">
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('admin-modal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').classList.add('hidden');
+        }
+
+        // Xử lý khi tải file ảnh từ máy tính lên
+        function handleImageUpload(event, id) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById(`admin-img-${id}`).value = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Lưu thay đổi từ bảng quản lý
+        function saveAdminData() {
+            products.forEach(p => {
+                const title = document.getElementById(`admin-title-${p.id}`).value;
+                const desc = document.getElementById(`admin-desc-${p.id}`).value;
+                const subStr = document.getElementById(`admin-sub-${p.id}`).value;
+                const image = document.getElementById(`admin-img-${p.id}`).value;
+
+                p.title = title;
+                p.desc = desc;
+                p.subFolders = subStr.split(',').map(s => s.trim()).filter(s => s.length > 0);
+                p.image = image;
+            });
+
+            localStorage.setItem('minhphat_products', JSON.stringify(products));
+            renderProducts();
+            closeAdminModal();
+            alert("Đã lưu thay đổi thành công!");
+        }
+
+        // Khởi chạy khi tải trang
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
