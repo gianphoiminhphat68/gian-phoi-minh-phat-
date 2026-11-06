@@ -36,10 +36,10 @@
 <body class="bg-slate-50 text-slate-800 antialiased">
 
     <!-- Top Bar -->
-    <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2 px-4 border-b border-gold/30">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+    <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2 px-3 sm:px-4 border-b border-gold/35">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-1.5 text-center sm:text-left">
             <div><i class="fas fa-map-marker-alt text-gold mr-1"></i> Phục vụ lắp đặt tận nơi tại TP.HCM & Toàn Quốc</div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center gap-3">
                 <a href="tel:0967220838" class="hover:text-gold font-semibold"><i class="fas fa-phone-alt text-gold mr-1"></i> 0967 220 838</a>
                 <span class="text-gold">-</span>
                 <a href="tel:0879319345" class="hover:text-gold font-semibold">0879 319 345</a>
@@ -49,16 +49,17 @@
 
     <!-- Header & Navigation -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-            <a href="javascript:showHome()" class="flex items-center gap-3 group">
-                <img src="https://i.imgur.com/7A26Wjy.png" alt="Logo Minh Phát" class="w-12 h-12 object-contain rounded-xl shadow border border-gold/50 bg-slate-900 p-1" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=150&q=80'">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="javascript:showHome()" class="flex items-center gap-2.5 sm:gap-3 group">
+                <img src="https://i.imgur.com/7A26Wjy.png" alt="Logo Minh Phát" class="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xl shadow border border-gold/60 bg-slate-900 p-1 flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=150&q=80'">
                 <div>
-                    <span class="text-xl sm:text-2xl font-extrabold text-primary tracking-wide">MINH PHÁT</span>
-                    <span class="block text-xs font-semibold tracking-wider text-gold uppercase">Giàn Phơi & Cửa Lưới</span>
+                    <span class="text-lg sm:text-2xl font-extrabold text-primary tracking-wide leading-none block">MINH PHÁT</span>
+                    <span class="text-[10px] sm:text-xs font-semibold tracking-wider text-gold uppercase mt-0.5 block">Giàn Phơi & Cửa Lưới</span>
                 </div>
             </a>
 
-            <nav class="hidden lg:flex items-center gap-6 font-medium text-slate-700">
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center gap-5 font-medium text-slate-700 text-sm">
                 <a href="javascript:showHome()" class="text-primary font-semibold hover:text-gold transition">Trang Chủ</a>
                 <a href="#products" onclick="showHome()" class="hover:text-gold transition">Sản Phẩm</a>
                 <a href="#videos" onclick="showHome()" class="hover:text-gold transition">Video Thực Tế</a>
@@ -66,20 +67,36 @@
                 <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="hover:text-gold transition flex items-center gap-1.5 text-slate-700">
                     <i class="fas fa-headset text-gold"></i> Cấu Hình Chat
                 </a>
-                <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition flex items-center gap-2 text-sm shadow">
+                <button onclick="openLoginModal()" class="px-3.5 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition flex items-center gap-1.5 text-xs shadow">
                     <i class="fas fa-lock"></i> Quản Lý (Admin)
                 </button>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <button onclick="openCartModal()" class="relative p-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-primary font-bold flex items-center gap-2 transition">
-                    <i class="fas fa-shopping-cart text-lg"></i>
-                    <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-slate-950 text-xs w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+            <!-- Actions Header -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="openCartModal()" class="relative p-2.5 sm:p-3 bg-slate-100 hover:bg-slate-200 rounded-xl text-primary font-bold flex items-center gap-1.5 transition">
+                    <i class="fas fa-shopping-cart text-base sm:text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-gold text-slate-950 text-[10px] sm:text-xs w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center font-black">0</span>
                 </button>
-                <a href="tel:0967220838" class="hidden sm:flex px-5 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow items-center gap-2 border border-gold/40">
+                <a href="tel:0967220838" class="hidden sm:flex px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-slate-900 text-white font-medium shadow items-center gap-2 border border-gold/40 text-sm">
                     <i class="fas fa-phone-alt text-gold"></i> 0967 220 838
                 </a>
+                <!-- Mobile Hamburger Toggle -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 bg-slate-100 text-slate-800 rounded-xl hover:bg-slate-200 transition">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
             </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <a href="javascript:showHome(); toggleMobileMenu();" class="block py-2 px-3 rounded-lg font-semibold text-primary bg-slate-50">Trang Chủ</a>
+            <a href="#products" onclick="showHome(); toggleMobileMenu();" class="block py-2 px-3 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Sản Phẩm</a>
+            <a href="#videos" onclick="showHome(); toggleMobileMenu();" class="block py-2 px-3 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Video Thực Tế</a>
+            <a href="#pricing" onclick="showHome(); toggleMobileMenu();" class="block py-2 px-3 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Bảng Giá</a>
+            <button onclick="openLoginModal(); toggleMobileMenu();" class="w-full text-left py-2 px-3 rounded-lg font-bold text-gold bg-slate-900 flex items-center gap-2">
+                <i class="fas fa-lock"></i> Đăng Nhập Quản Lý (Admin)
+            </button>
         </div>
     </header>
 
@@ -87,90 +104,90 @@
     <main id="main-content">
         <div id="home-view">
             <!-- Auto Slider Banner -->
-            <section class="relative bg-slate-900 text-white overflow-hidden h-[450px] sm:h-[500px]">
+            <section class="relative bg-slate-900 text-white overflow-hidden h-[380px] sm:h-[480px]">
                 <div id="slider-container" class="relative w-full h-full">
-                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center bg-gradient-to-r from-slate-950 via-primary to-slate-900 px-6 sm:px-16">
-                        <div class="max-w-3xl space-y-4">
-                            <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">CHÍNH HÃNG - UY TÍN - CHẤT LƯỢNG</span>
-                            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Giàn Phơi Thông Minh <span class="text-gold">Điện Tử & Quay Tay</span></h1>
-                            <p class="text-slate-300 text-base sm:text-lg">Giải pháp tối ưu không gian phơi đồ căn hộ và nhà phố. Lắp đặt trọn gói tận nơi tại TP.HCM.</p>
-                            <div class="pt-2"><a href="#products" class="px-8 py-3.5 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block">Xem Sản Phẩm Ngay</a></div>
+                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-100 flex items-center bg-gradient-to-r from-slate-950 via-primary to-slate-900 px-5 sm:px-16">
+                        <div class="max-w-3xl space-y-3 sm:space-y-4">
+                            <span class="px-3.5 py-1 rounded-full bg-gold/20 text-gold text-[11px] sm:text-xs font-semibold border border-gold/40">CHÍNH HÃNG - UY TÍN - CHẤT LƯỢNG</span>
+                            <h1 class="text-2xl sm:text-5xl font-extrabold leading-tight">Giàn Phơi Thông Minh <span class="text-gold">Điện Tử & Quay Tay</span></h1>
+                            <p class="text-slate-300 text-sm sm:text-lg">Giải pháp tối ưu không gian phơi đồ căn hộ và nhà phố. Lắp đặt trọn gói tận nơi tại TP.HCM.</p>
+                            <div class="pt-1"><a href="#products" class="px-6 sm:px-8 py-3 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block text-sm sm:text-base">Xem Sản Phẩm Ngay</a></div>
                         </div>
                     </div>
-                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center bg-gradient-to-r from-slate-900 via-slate-950 to-primary px-6 sm:px-16">
-                        <div class="max-w-3xl space-y-4">
-                            <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">BẢO VỆ GIA ĐÌNH BẠN</span>
-                            <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight">Cửa Lưới Chống Muỗi & <span class="text-gold">Lưới An Toàn</span></h1>
-                            <p class="text-slate-300 text-base sm:text-lg">Ngăn chặn côn trùng tuyệt đối, bảo vệ an toàn cho trẻ nhỏ ở các tòa nhà cao tầng.</p>
-                            <div class="pt-2"><a href="#products" class="px-8 py-3.5 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block">Khám Phá Ngay</a></div>
+                    <div class="slide absolute inset-0 transition-opacity duration-1000 opacity-0 flex items-center bg-gradient-to-r from-slate-900 via-slate-950 to-primary px-5 sm:px-16">
+                        <div class="max-w-3xl space-y-3 sm:space-y-4">
+                            <span class="px-3.5 py-1 rounded-full bg-gold/20 text-gold text-[11px] sm:text-xs font-semibold border border-gold/40">BẢO VỆ GIA ĐÌNH BẠN</span>
+                            <h1 class="text-2xl sm:text-5xl font-extrabold leading-tight">Cửa Lưới Chống Muỗi & <span class="text-gold">Lưới An Toàn</span></h1>
+                            <p class="text-slate-300 text-sm sm:text-lg">Ngăn chặn côn trùng tuyệt đối, bảo vệ an toàn cho trẻ nhỏ ở các tòa nhà cao tầng.</p>
+                            <div class="pt-1"><a href="#products" class="px-6 sm:px-8 py-3 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition inline-block text-sm sm:text-base">Khám Phá Ngay</a></div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Product Listing & Search/Filter Section -->
-            <section id="products" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-10">
-                    <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tất Cả Sản Phẩm & Dịch Vụ Riêng Lẻ</h2>
-                    <p class="text-slate-600 mt-2">Tìm kiếm nhanh hoặc chọn lọc danh mục sản phẩm bạn quan tâm.</p>
+            <section id="products" class="py-12 sm:py-16 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                <div class="text-center mb-8 sm:mb-10">
+                    <span class="text-gold font-semibold uppercase text-xs sm:text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-primary mt-2 sm:mt-3">Tất Cả Sản Phẩm & Dịch Vụ Riêng Lẻ</h2>
+                    <p class="text-slate-600 text-xs sm:text-base mt-1.5 sm:mt-2">Tìm kiếm nhanh hoặc chọn lọc danh mục sản phẩm bạn quan tâm.</p>
                 </div>
 
                 <!-- Search & Dynamic Category Filter Bar -->
-                <div class="bg-white p-4 rounded-2xl shadow border border-slate-200 mb-10 flex flex-col md:flex-row gap-4 justify-between items-center">
+                <div class="bg-white p-3.5 sm:p-4 rounded-2xl shadow border border-slate-200 mb-8 sm:mb-10 flex flex-col md:flex-row gap-3 md:gap-4 justify-between items-center">
                     <div class="relative w-full md:w-96">
                         <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                        <input type="text" id="search-input" oninput="filterProducts()" placeholder="Nhập tên sản phẩm cần tìm..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                        <input type="text" id="search-input" oninput="filterProducts()" placeholder="Nhập tên sản phẩm cần tìm..." class="w-full pl-11 pr-4 py-2.5 sm:py-3 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary">
                     </div>
-                    <div id="category-buttons-container" class="flex flex-wrap gap-2 w-full md:w-auto justify-start md:justify-end"></div>
+                    <div id="category-buttons-container" class="flex flex-wrap gap-1.5 sm:gap-2 w-full md:w-auto justify-start md:justify-end"></div>
                 </div>
 
-                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"></div>
             </section>
 
             <!-- Video Section -->
-            <section id="videos" class="py-16 bg-white border-t border-slate-200">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Video Thực Tế</span>
-                        <h2 class="text-3xl font-extrabold text-primary mt-3">Video Lắp Đặt & Thi Công</h2>
+            <section id="videos" class="py-12 sm:py-16 bg-white border-t border-slate-200">
+                <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                    <div class="text-center mb-8 sm:mb-12">
+                        <span class="text-gold font-semibold uppercase text-xs sm:text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Video Thực Tế</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-primary mt-2 sm:mt-3">Video Lắp Đặt & Thi Công</h2>
                     </div>
-                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+                    <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6"></div>
                 </div>
             </section>
 
             <!-- Pricing Section -->
-            <section id="pricing" class="py-16 bg-slate-100">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="text-center mb-12">
-                        <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Bảng Giá Trọn Gói</span>
-                        <h2 class="text-3xl font-extrabold text-primary mt-3">Báo Giá Tham Khảo</h2>
+            <section id="pricing" class="py-12 sm:py-16 bg-slate-100">
+                <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                    <div class="text-center mb-8 sm:mb-12">
+                        <span class="text-gold font-semibold uppercase text-xs sm:text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Bảng Giá Trọn Gói</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-primary mt-2 sm:mt-3">Báo Giá Tham Khảo</h2>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                             <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Gói Cơ Bản</h3>
-                                <div class="text-3xl font-black text-gold my-4">Liên hệ tốt nhất</div>
-                                <p class="text-slate-600 text-sm mb-6">Giàn phơi quay tay & lưới an toàn ban công tiêu chuẩn. Lắp đặt trọn gói.</p>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Gói Cơ Bản</h3>
+                                <div class="text-2xl sm:text-3xl font-black text-gold my-3 sm:my-4">Liên hệ tốt nhất</div>
+                                <p class="text-slate-600 text-xs sm:text-sm mb-6">Giàn phơi quay tay & lưới an toàn ban công tiêu chuẩn. Lắp đặt trọn gói.</p>
                             </div>
-                            <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
+                            <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition text-sm">Tư Vấn Ngay</a>
                         </div>
-                        <div class="bg-slate-900 text-white p-8 rounded-3xl border-2 border-gold shadow-xl flex flex-col justify-between relative">
-                            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-slate-950 font-black text-xs px-4 py-1 rounded-full uppercase">Bán Chạy Nhất</div>
+                        <div class="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl border-2 border-gold shadow-xl flex flex-col justify-between relative">
+                            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-slate-950 font-black text-[10px] sm:text-xs px-3.5 py-1 rounded-full uppercase">Bán Chạy Nhất</div>
                             <div>
-                                <h3 class="text-2xl font-bold text-white mb-2">Gói Combo Gia Đình</h3>
-                                <div class="text-3xl font-black text-gold my-4">Ưu đãi đặc biệt</div>
-                                <p class="text-slate-300 text-sm mb-6">Giàn phơi điện tử cao cấp kết hợp cửa lưới chống muỗi. Bảo hành 5 năm.</p>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Gói Combo Gia Đình</h3>
+                                <div class="text-2xl sm:text-3xl font-black text-gold my-3 sm:my-4">Ưu đãi đặc biệt</div>
+                                <p class="text-slate-300 text-xs sm:text-sm mb-6">Giàn phơi điện tử cao cấp kết hợp cửa lưới chống muỗi. Bảo hành 5 năm.</p>
                             </div>
-                            <a href="tel:0967220838" class="py-3 bg-gold text-slate-950 font-bold rounded-xl text-center hover:bg-gold-light transition">Gọi 0967.220.838</a>
+                            <a href="tel:0967220838" class="py-3 bg-gold text-slate-950 font-bold rounded-xl text-center hover:bg-gold-light transition text-sm">Gọi 0967.220.838</a>
                         </div>
-                        <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
                             <div>
-                                <h3 class="text-2xl font-bold text-slate-900 mb-2">Gói Toàn Diện</h3>
-                                <div class="text-3xl font-black text-gold my-4">Giá xưởng tốt nhất</div>
-                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, bạt che nắng mưa đo đạc lắp đặt trọn gói tận nơi.</p>
+                                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-2">Gói Toàn Diện</h3>
+                                <div class="text-2xl sm:text-3xl font-black text-gold my-3 sm:my-4">Giá xưởng tốt nhất</div>
+                                <p class="text-slate-600 text-xs sm:text-sm mb-6">Vách ngăn rèm tổ ong, bạt che nắng mưa đo đạc lắp đặt trọn gói tận nơi.</p>
                             </div>
-                            <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
+                            <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition text-sm">Tư Vấn Ngay</a>
                         </div>
                     </div>
                 </div>
@@ -178,41 +195,41 @@
         </div>
 
         <!-- Trang Chi Tiết Sản Phẩm -->
-        <div id="detail-view" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <button onclick="showHome()" class="mb-8 px-5 py-2.5 rounded-xl bg-slate-200 text-slate-800 font-semibold hover:bg-slate-300 transition flex items-center gap-2 w-max">
+        <div id="detail-view" class="hidden py-8 sm:py-12 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <button onclick="showHome()" class="mb-6 sm:mb-8 px-4 sm:px-5 py-2.5 rounded-xl bg-slate-200 text-slate-800 font-semibold hover:bg-slate-300 transition flex items-center gap-2 text-xs sm:text-sm w-max">
                 <i class="fas fa-arrow-left"></i> Quay lại danh mục sản phẩm
             </button>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 bg-white p-4 sm:p-8 rounded-3xl shadow-xl border border-slate-200">
                 <div>
-                    <div class="rounded-2xl overflow-hidden bg-slate-100 h-80 sm:h-96 border border-slate-200 mb-4">
+                    <div class="rounded-2xl overflow-hidden bg-slate-100 h-64 sm:h-96 border border-slate-200 mb-3 sm:mb-4">
                         <img id="detail-main-img" src="" alt="Sản phẩm Minh Phát" class="w-full h-full object-cover">
                     </div>
                     <div id="detail-thumbnails" class="grid grid-cols-5 gap-2"></div>
                 </div>
 
-                <div class="space-y-6 flex flex-col justify-between">
+                <div class="space-y-4 sm:space-y-6 flex flex-col justify-between">
                     <div>
-                        <span class="px-3 py-1 bg-gold/10 text-gold text-xs font-bold uppercase rounded-full border border-gold/30">Sản Phẩm Chính Hãng Minh Phát</span>
-                        <h2 id="detail-title" class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tên Sản Phẩm</h2>
-                        <div class="flex items-center gap-1 text-amber-500 my-2 text-sm">
+                        <span class="px-3 py-1 bg-gold/10 text-gold text-[10px] sm:text-xs font-bold uppercase rounded-full border border-gold/30">Sản Phẩm Chính Hãng Minh Phát</span>
+                        <h2 id="detail-title" class="text-2xl sm:text-4xl font-extrabold text-primary mt-2.5 sm:mt-3">Tên Sản Phẩm</h2>
+                        <div class="flex items-center gap-1 text-amber-500 my-2 text-xs sm:text-sm">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                            <span class="text-slate-500 text-xs ml-2">(5.0 / 5 sao từ khách hàng)</span>
+                            <span class="text-slate-500 text-[11px] sm:text-xs ml-2">(5.0 / 5 sao từ khách hàng)</span>
                         </div>
-                        <div id="detail-price" class="text-2xl font-black text-gold my-3">Liên hệ báo giá</div>
-                        <p id="detail-desc" class="text-slate-600 text-base leading-relaxed">Mô tả chi tiết sản phẩm...</p>
+                        <div id="detail-price" class="text-xl sm:text-2xl font-black text-gold my-2 sm:my-3">Liên hệ báo giá</div>
+                        <p id="detail-desc" class="text-slate-600 text-sm sm:text-base leading-relaxed">Mô tả chi tiết sản phẩm...</p>
                     </div>
 
-                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
-                        <h4 class="font-bold text-slate-900 text-sm mb-3"><i class="fas fa-list-ul text-gold mr-2"></i>Phân Loại & Mẫu Mã Chi Tiết:</h4>
-                        <ul id="detail-sublist" class="space-y-2 text-sm text-slate-700"></ul>
+                    <div class="bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 text-xs sm:text-sm mb-2.5 sm:mb-3"><i class="fas fa-list-ul text-gold mr-2"></i>Phân Loại & Mẫu Mã Chi Tiết:</h4>
+                        <ul id="detail-sublist" class="space-y-2 text-xs sm:text-sm text-slate-700"></ul>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-slate-100">
-                        <button onclick="addToCartFromDetail()" class="flex-1 py-4 rounded-xl bg-gold text-slate-950 font-bold text-center shadow-lg hover:bg-gold-light transition flex items-center justify-center gap-2 text-base">
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-slate-100">
+                        <button onclick="addToCartFromDetail()" class="flex-1 py-3.5 sm:py-4 rounded-xl bg-gold text-slate-950 font-bold text-center shadow-lg hover:bg-gold-light transition flex items-center justify-center gap-2 text-sm sm:text-base">
                             <i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng
                         </button>
-                        <a href="tel:0967220838" class="px-6 py-4 rounded-xl bg-primary text-white font-bold text-center shadow-lg hover:bg-slate-900 transition flex items-center justify-center gap-2">
+                        <a href="tel:0967220838" class="px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl bg-primary text-white font-bold text-center shadow-lg hover:bg-slate-900 transition flex items-center justify-center gap-2 text-sm sm:text-base">
                             <i class="fas fa-phone-alt text-gold"></i> Gọi Nhanh
                         </a>
                     </div>
@@ -222,133 +239,133 @@
     </main>
 
     <!-- Modal Giỏ Hàng -->
-    <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white text-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200">
-            <button onclick="closeCartModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
-            <h3 class="text-2xl font-bold text-primary mb-4 flex items-center gap-2"><i class="fas fa-shopping-cart text-gold"></i> Giỏ Hàng Của Bạn</h3>
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+        <div class="bg-white text-slate-900 rounded-3xl max-w-lg w-full p-5 sm:p-8 relative shadow-2xl border border-slate-200">
+            <button onclick="closeCartModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-100 flex items-center justify-center text-base sm:text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl sm:text-2xl font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2"><i class="fas fa-shopping-cart text-gold"></i> Giỏ Hàng Của Bạn</h3>
             
-            <div id="cart-items-container" class="max-h-60 overflow-y-auto space-y-3 mb-6 divide-y divide-slate-100"></div>
+            <div id="cart-items-container" class="max-h-52 sm:max-h-60 overflow-y-auto space-y-3 mb-4 sm:mb-6 divide-y divide-slate-100"></div>
 
-            <div class="border-t border-slate-200 pt-4 space-y-3">
-                <h4 class="font-bold text-slate-900 text-sm">Thông tin đặt lịch lắp đặt:</h4>
-                <input type="text" id="order-name" placeholder="Họ và tên của bạn" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
-                <input type="text" id="order-phone" placeholder="Số điện thoại liên hệ" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
-                <input type="text" id="order-address" placeholder="Địa chỉ lắp đặt tại TP.HCM" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm">
-                <button onclick="submitOrder()" class="w-full py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-slate-900 transition shadow">Gửi Đơn Đặt Hàng Ngay</button>
+            <div class="border-t border-slate-200 pt-3.5 sm:pt-4 space-y-2.5 sm:space-y-3">
+                <h4 class="font-bold text-slate-900 text-xs sm:text-sm">Thông tin đặt lịch lắp đặt:</h4>
+                <input type="text" id="order-name" placeholder="Họ và tên của bạn" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm">
+                <input type="text" id="order-phone" placeholder="Số điện thoại liên hệ" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm">
+                <input type="text" id="order-address" placeholder="Địa chỉ lắp đặt tại TP.HCM" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm">
+                <button onclick="submitOrder()" class="w-full py-3 sm:py-3.5 rounded-xl bg-primary text-white font-bold hover:bg-slate-900 transition shadow text-sm">Gửi Đơn Đặt Hàng Ngay</button>
             </div>
         </div>
     </div>
 
     <!-- Toast Notification Popup -->
-    <div id="toast-notification" class="fixed top-24 right-6 z-50 hidden bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl border border-gold flex items-center gap-3 toast-animate">
-        <div class="w-8 h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold"><i class="fas fa-check"></i></div>
+    <div id="toast-notification" class="fixed top-20 sm:top-24 right-4 sm:right-6 z-50 hidden bg-slate-900 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl shadow-2xl border border-gold flex items-center gap-3 toast-animate text-xs sm:text-sm">
+        <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gold text-slate-950 flex items-center justify-center font-bold flex-shrink-0"><i class="fas fa-check text-xs"></i></div>
         <div>
-            <div class="font-bold text-sm">Thành công!</div>
-            <div id="toast-message" class="text-xs text-slate-300">Đã thêm sản phẩm vào giỏ hàng.</div>
+            <div class="font-bold text-xs sm:text-sm">Thành công!</div>
+            <div id="toast-message" class="text-[11px] sm:text-xs text-slate-300">Đã thêm sản phẩm vào giỏ hàng.</div>
         </div>
     </div>
 
     <!-- Modal Đăng Nhập Admin -->
-    <div id="login-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="login-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
         <div class="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-gold">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
-            <div class="text-center mb-6">
-                <div class="w-14 h-14 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 border border-gold/40"><i class="fas fa-lock"></i></div>
-                <h3 class="text-2xl font-bold text-white">Đăng Nhập Quản Trị</h3>
-                <p class="text-slate-400 text-xs mt-1">Mật khẩu: MinhPhat372313</p>
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center text-base sm:text-lg transition"><i class="fas fa-times"></i></button>
+            <div class="text-center mb-5 sm:mb-6">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-xl sm:text-2xl mx-auto mb-3 border border-gold/40"><i class="fas fa-lock"></i></div>
+                <h3 class="text-xl sm:text-2xl font-bold text-white">Đăng Nhập Quản Trị</h3>
+                <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Mật khẩu: MinhPhat372313</p>
             </div>
-            <div class="space-y-4">
+            <div class="space-y-3.5 sm:space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Tên Đăng Nhập</label>
-                    <input type="text" id="admin-user" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm" placeholder="Nhập tài khoản">
+                    <label class="block text-[11px] sm:text-xs font-semibold uppercase text-slate-300 mb-1">Tên Đăng Nhập</label>
+                    <input type="text" id="admin-user" class="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm" placeholder="Nhập tài khoản">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Mật Khẩu</label>
-                    <input type="password" id="admin-pass" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm" placeholder="Nhập mật khẩu">
+                    <label class="block text-[11px] sm:text-xs font-semibold uppercase text-slate-300 mb-1">Mật Khẩu</label>
+                    <input type="password" id="admin-pass" class="w-full px-3.5 py-2.5 sm:py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm" placeholder="Nhập mật khẩu">
                 </div>
                 <div id="login-error" class="text-red-400 text-xs hidden">Tên đăng nhập hoặc mật khẩu không chính xác!</div>
-                <button onclick="checkLogin()" class="w-full py-3.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-base">Đăng Nhập</button>
+                <button onclick="checkLogin()" class="w-full py-3 sm:py-3.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-sm sm:text-base">Đăng Nhập</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Quản Lý (Admin Dashboard) -->
-    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-slate-900 text-white rounded-3xl max-w-4xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
+    <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-4xl w-full p-4 sm:p-8 relative shadow-2xl border border-gold my-6 sm:my-8">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center text-base sm:text-lg transition"><i class="fas fa-times"></i></button>
             
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-slate-800 pb-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 mb-5 sm:mb-6 border-b border-slate-800 pb-3.5 sm:pb-4">
                 <div>
-                    <h3 class="text-2xl font-bold text-gold"><i class="fas fa-cog mr-2"></i>Hệ Thống Quản Trị Minh Phát</h3>
-                    <p class="text-slate-400 text-xs mt-1">Thêm sản phẩm mới, quản lý danh mục, hình ảnh và danh sách đơn hàng.</p>
+                    <h3 class="text-xl sm:text-2xl font-bold text-gold"><i class="fas fa-cog mr-2"></i>Hệ Thống Quản Trị Minh Phát</h3>
+                    <p class="text-slate-400 text-[11px] sm:text-xs mt-1">Thêm sản phẩm mới, quản lý danh mục, hình ảnh và danh sách đơn hàng.</p>
                 </div>
-                <div class="flex flex-wrap gap-2 bg-slate-800 p-1 rounded-xl">
-                    <button onclick="switchAdminTab('categories')" id="tab-btn-categories" class="px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition">Quản Lý Danh Mục</button>
-                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition">Quản Lý Sản Phẩm</button>
-                    <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition">Đơn Hàng (<span id="admin-order-count">0</span>)</button>
+                <div class="flex flex-wrap gap-1.5 sm:gap-2 bg-slate-800 p-1 rounded-xl w-full sm:w-auto">
+                    <button onclick="switchAdminTab('categories')" id="tab-btn-categories" class="flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg text-slate-300 font-bold text-[11px] sm:text-xs hover:text-white transition">Danh Mục</button>
+                    <button onclick="switchAdminTab('products')" id="tab-btn-products" class="flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-[11px] sm:text-xs transition">Sản Phẩm</button>
+                    <button onclick="switchAdminTab('orders')" id="tab-btn-orders" class="flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg text-slate-300 font-bold text-[11px] sm:text-xs hover:text-white transition">Đơn (<span id="admin-order-count">0</span>)</button>
                 </div>
             </div>
 
             <!-- Tab 1: Quản Lý Danh Mục -->
-            <div id="admin-tab-categories" class="hidden space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-                <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 flex gap-3 items-center">
-                    <input type="text" id="new-cat-name" placeholder="Tên danh mục mới (Ví dụ: Khóa điện tử)" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-                    <button onclick="addNewCategory()" class="px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-sm hover:bg-gold-light transition whitespace-nowrap"><i class="fas fa-plus mr-1"></i> Thêm danh mục</button>
+            <div id="admin-tab-categories" class="hidden space-y-4 sm:space-y-6 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto pr-1 sm:pr-2">
+                <div class="bg-slate-800 p-3.5 sm:p-4 rounded-2xl border border-slate-700 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-center">
+                    <input type="text" id="new-cat-name" placeholder="Tên danh mục mới..." class="w-full sm:flex-1 px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm">
+                    <button onclick="addNewCategory()" class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-xs sm:text-sm hover:bg-gold-light transition whitespace-nowrap"><i class="fas fa-plus mr-1"></i> Thêm danh mục</button>
                 </div>
                 <div id="admin-categories-list" class="space-y-3"></div>
             </div>
 
             <!-- Tab 2: Sản Phẩm (Thêm mới + Chỉnh sửa danh sách) -->
-            <div id="admin-tab-products" class="space-y-6 max-h-[60vh] overflow-y-auto pr-2">
-                <div class="bg-gold/10 p-4 rounded-2xl border border-gold/40 flex justify-between items-center">
+            <div id="admin-tab-products" class="space-y-4 sm:space-y-6 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto pr-1 sm:pr-2">
+                <div class="bg-gold/10 p-3.5 sm:p-4 rounded-2xl border border-gold/40 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div>
-                        <h4 class="font-bold text-gold text-sm">Thêm sản phẩm mới vào danh mục</h4>
-                        <p class="text-slate-400 text-xs">Tạo sản phẩm mới và điền đầy đủ thông tin bên dưới.</p>
+                        <h4 class="font-bold text-gold text-xs sm:text-sm">Thêm sản phẩm mới vào danh mục</h4>
+                        <p class="text-slate-400 text-[11px] sm:text-xs">Tạo sản phẩm mới và điền đầy đủ thông tin bên dưới.</p>
                     </div>
-                    <button onclick="openAddProductModal()" class="px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-sm hover:bg-gold-light transition shadow whitespace-nowrap"><i class="fas fa-plus mr-1"></i> + Thêm sản phẩm mới</button>
+                    <button onclick="openAddProductModal()" class="w-full sm:w-auto px-4 sm:px-5 py-2.5 rounded-xl bg-gold text-slate-950 font-bold text-xs sm:text-sm hover:bg-gold-light transition shadow whitespace-nowrap"><i class="fas fa-plus mr-1"></i> + Thêm sản phẩm mới</button>
                 </div>
                 <div id="admin-product-container" class="space-y-4"></div>
             </div>
 
             <!-- Tab 3: Đơn Hàng -->
-            <div id="admin-tab-orders" class="hidden space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+            <div id="admin-tab-orders" class="hidden space-y-4 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto pr-1 sm:pr-2">
                 <div id="admin-order-container" class="space-y-4"></div>
             </div>
 
-            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-4">
-                <button onclick="saveAdminData()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Lưu Lại Thay Đổi</button>
-                <button onclick="closeAdminModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Đóng</button>
+            <div class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-800 flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
+                <button onclick="saveAdminData()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-sm">Lưu Lại Thay Đổi</button>
+                <button onclick="closeAdminModal()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition text-sm">Đóng</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Thêm Sản Phẩm Mới (Riêng biệt để thao tác nhanh) -->
-    <div id="add-product-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-slate-900 text-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
-            <button onclick="closeAddProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition"><i class="fas fa-times"></i></button>
-            <h3 class="text-2xl font-bold text-gold mb-4"><i class="fas fa-plus-circle mr-2"></i>Thêm Sản Phẩm Mới</h3>
+    <div id="add-product-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-2xl w-full p-5 sm:p-8 relative shadow-2xl border border-gold my-6 sm:my-8">
+            <button onclick="closeAddProductModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-slate-800 flex items-center justify-center text-base sm:text-lg transition"><i class="fas fa-times"></i></button>
+            <h3 class="text-xl sm:text-2xl font-bold text-gold mb-3 sm:mb-4"><i class="fas fa-plus-circle mr-2"></i>Thêm Sản Phẩm Mới</h3>
             
-            <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+            <div class="space-y-3.5 sm:space-y-4 max-h-[55vh] sm:max-h-[60vh] overflow-y-auto pr-1 sm:pr-2">
                 <div>
-                    <label class="text-xs text-slate-400 block mb-1">Tên sản phẩm:</label>
-                    <input type="text" id="new-prod-title" placeholder="Ví dụ: Giàn phơi điện tử cao cấp..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm">
+                    <label class="text-[11px] sm:text-xs text-slate-400 block mb-1">Tên sản phẩm:</label>
+                    <input type="text" id="new-prod-title" placeholder="Ví dụ: Giàn phơi điện tử cao cấp..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm">
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                     <div>
-                        <label class="text-xs text-slate-400 block mb-1">Danh mục:</label>
-                        <select id="new-prod-cat" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm"></select>
+                        <label class="text-[11px] sm:text-xs text-slate-400 block mb-1">Danh mục:</label>
+                        <select id="new-prod-cat" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm"></select>
                     </div>
                     <div>
-                        <label class="text-xs text-slate-400 block mb-1">Giá sản phẩm:</label>
-                        <input type="text" id="new-prod-price" placeholder="Ví dụ: Từ 1.200.000đ" class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm">
+                        <label class="text-[11px] sm:text-xs text-slate-400 block mb-1">Giá sản phẩm:</label>
+                        <input type="text" id="new-prod-price" placeholder="Ví dụ: Từ 1.200.000đ" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm">
                     </div>
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 block mb-1">Mô tả chi tiết:</label>
-                    <textarea id="new-prod-desc" rows="3" placeholder="Nhập mô tả sản phẩm..." class="w-full px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm"></textarea>
+                    <label class="text-[11px] sm:text-xs text-slate-400 block mb-1">Mô tả chi tiết:</label>
+                    <textarea id="new-prod-desc" rows="3" placeholder="Nhập mô tả sản phẩm..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm"></textarea>
                 </div>
                 <div>
-                    <label class="text-xs text-slate-400 block mb-1">Link Ảnh Chính (Ảnh 1):</label>
+                    <label class="text-[11px] sm:text-xs text-slate-400 block mb-1">Link Ảnh Chính (Ảnh 1):</label>
                     <div class="flex gap-2 items-center">
                         <input type="text" id="new-prod-img1" class="flex-1 px-3 py-2 rounded-lg bg-slate-800 border border-slate-700 text-white text-xs" placeholder="Nhập link ảnh hoặc chọn file từ máy">
                         <label class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer whitespace-nowrap">
@@ -359,30 +376,55 @@
                 </div>
             </div>
 
-            <div class="mt-6 pt-4 border-t border-slate-800 flex justify-end gap-3">
-                <button onclick="createNewProductSubmit()" class="px-6 py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow">Xác Nhận Thêm</button>
-                <button onclick="closeAddProductModal()" class="px-6 py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition">Hủy</button>
+            <div class="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-800 flex justify-end gap-3">
+                <button onclick="createNewProductSubmit()" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-xs sm:text-sm">Xác Nhận Thêm</button>
+                <button onclick="closeAddProductModal()" class="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-slate-800 text-slate-300 font-semibold hover:bg-slate-700 transition text-xs sm:text-sm">Hủy</button>
             </div>
         </div>
     </div>
 
     <!-- Floating Contacts -->
-    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
-        <a href="https://zalo.me/0967220838" target="_blank" class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-xl flex items-center justify-center font-bold text-sm" title="Chat Zalo">ZALO</a>
-        <a href="https://www.facebook.com/gianphoicualuoiminhphat68" target="_blank" class="w-14 h-14 bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center text-2xl" title="Chat Messenger"><i class="fab fa-facebook-messenger"></i></a>
-        <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="w-14 h-14 bg-cyan-600 text-white rounded-full shadow-xl flex items-center justify-center text-xl font-bold" title="Cấu hình Tawk.to Chat Wizard"><i class="fas fa-headset"></i></a>
-        <a href="tel:0967220838" class="w-14 h-14 bg-gold text-slate-950 rounded-full shadow-xl flex items-center justify-center text-xl" title="Gọi Ngay"><i class="fas fa-phone-alt"></i></a>
+    <div class="fixed bottom-5 left-4 sm:bottom-6 sm:left-6 z-40 flex flex-col gap-2.5 sm:gap-3">
+        <a href="https://zalo.me/0967220838" target="_blank" class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-600 text-white rounded-full shadow-xl flex items-center justify-center font-bold text-xs sm:text-sm" title="Chat Zalo">ZALO</a>
+        <a href="https://www.facebook.com/gianphoicualuoiminhphat68" target="_blank" class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-700 text-white rounded-full shadow-xl flex items-center justify-center text-xl sm:text-2xl" title="Chat Messenger"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="https://dashboard.tawk.to/#/wizard" target="_blank" class="w-12 h-12 sm:w-14 sm:h-14 bg-cyan-600 text-white rounded-full shadow-xl flex items-center justify-center text-lg sm:text-xl font-bold" title="Cấu hình Tawk.to Chat Wizard"><i class="fas fa-headset"></i></a>
+        <a href="tel:0967220838" class="w-12 h-12 sm:w-14 sm:h-14 bg-gold text-slate-950 rounded-full shadow-xl flex items-center justify-center text-lg sm:text-xl" title="Gọi Ngay"><i class="fas fa-phone-alt"></i></a>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 py-8 text-center text-sm border-t border-slate-800">
-        <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
+    <footer class="bg-slate-950 text-slate-400 py-8 text-xs sm:text-sm border-t border-slate-800 px-4">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 text-left">
+            <div>
+                <h4 class="text-gold font-bold text-sm uppercase mb-2">Trụ Sở Chính</h4>
+                <p>Địa chỉ: 606/23/7 Quốc lộ 13, P. Hiệp Bình Phước, TP. Thủ Đức, TP.HCM</p>
+                <p class="mt-1">Hotline: 0967 220 838 - 0879 319 345</p>
+            </div>
+            <div>
+                <h4 class="text-gold font-bold text-sm uppercase mb-2">Hệ Thống Chi Nhánh TP.HCM</h4>
+                <p class="mb-1"><strong>Chi nhánh 1:</strong> 20 Đường 268, Phường Phước Long A, TP. Thủ Đức, TP.HCM</p>
+                <p class="mb-1"><strong>Chi nhánh 2:</strong> 457-459 Tân Quý, Bình Tân, TP.HCM</p>
+                <p class="mb-1"><strong>Chi nhánh 3:</strong> Số 122 Huỳnh Tấn Phát, Quận 7, TP.HCM</p>
+                <p><strong>Chi nhánh 4:</strong> Số 31 Quốc Lộ 1A, Quận 12, TP.HCM</p>
+            </div>
+            <div>
+                <h4 class="text-gold font-bold text-sm uppercase mb-2">Chi Nhánh Đồng Nai</h4>
+                <p><strong>Chi nhánh 5:</strong> 09 Vũ Hồng Phô, Biên Hòa, Đồng Nai</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-4 border-t border-slate-800 text-center text-slate-500">
+            <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Tất cả quyền được bảo lưu.</p>
+        </div>
     </footer>
 
     <!-- JavaScript Xử Lý Toàn Bộ Tính Năng -->
     <script>
         const ADMIN_USER = "admin";
         const ADMIN_PASS = "MinhPhat372313";
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
 
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -700,11 +742,11 @@
 
         function renderCategoryButtons() {
             const container = document.getElementById('category-buttons-container');
-            container.innerHTML = `<button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl ${activeCategory === 'all' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-sm font-semibold transition">Tất Cả</button>`;
+            container.innerHTML = `<button onclick="filterCategory('all')" class="cat-btn px-3 sm:px-4 py-2 rounded-xl ${activeCategory === 'all' ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-xs sm:text-sm font-semibold transition">Tất Cả</button>`;
             
             categories.forEach(cat => {
                 const isActive = activeCategory === cat.id;
-                container.innerHTML += `<button onclick="filterCategory('${cat.id}')" class="cat-btn px-4 py-2 rounded-xl ${isActive ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-sm font-semibold transition">${cat.name}</button>`;
+                container.innerHTML += `<button onclick="filterCategory('${cat.id}')" class="cat-btn px-3 sm:px-4 py-2 rounded-xl ${isActive ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'} text-xs sm:text-sm font-semibold transition">${cat.name}</button>`;
             });
         }
 
@@ -721,28 +763,28 @@
             });
 
             if(filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-3 text-center py-10 text-slate-500">Không tìm thấy sản phẩm phù hợp.</div>`;
+                grid.innerHTML = `<div class="col-span-3 text-center py-10 text-slate-500 text-sm">Không tìm thấy sản phẩm phù hợp.</div>`;
                 return;
             }
 
             filtered.forEach(p => {
                 const div = document.createElement('div');
-                div.className = `bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-6 cursor-pointer group`;
+                div.className = `bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-4 sm:p-6 cursor-pointer group`;
                 div.onclick = () => showDetail(p.id);
                 div.innerHTML = `
                     <div>
-                        <div class="h-48 rounded-xl overflow-hidden mb-4 bg-slate-200">
+                        <div class="h-44 sm:h-48 rounded-xl overflow-hidden mb-3 sm:mb-4 bg-slate-200">
                             <img src="${p.images[0]}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                         </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-1 group-hover:text-primary transition">${p.title}</h3>
+                        <h3 class="text-base sm:text-xl font-bold text-slate-900 mb-1 group-hover:text-primary transition">${p.title}</h3>
                         <div class="flex items-center gap-1 text-amber-500 mb-2 text-xs">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             <span class="text-slate-400 ml-1">(5.0)</span>
                         </div>
-                        <p class="text-gold font-bold text-sm mb-2">${p.price}</p>
-                        <p class="text-slate-600 text-sm line-clamp-2">${p.desc}</p>
+                        <p class="text-gold font-bold text-xs sm:text-sm mb-2">${p.price}</p>
+                        <p class="text-slate-600 text-xs sm:text-sm line-clamp-2">${p.desc}</p>
                     </div>
-                    <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-primary font-semibold text-sm">
+                    <div class="mt-4 pt-3 sm:pt-4 border-t border-slate-100 flex items-center justify-between text-primary font-semibold text-xs sm:text-sm">
                         <span>Xem chi tiết & mua hàng</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
                     </div>
@@ -765,12 +807,12 @@
             grid.innerHTML = '';
             videos.forEach(v => {
                 const div = document.createElement('div');
-                div.className = 'bg-slate-50 rounded-2xl overflow-hidden shadow border border-slate-200 p-4';
+                div.className = 'bg-slate-50 rounded-2xl overflow-hidden shadow border border-slate-200 p-3 sm:p-4';
                 div.innerHTML = `
-                    <div class="h-48 rounded-xl overflow-hidden mb-3 bg-black">
+                    <div class="h-40 sm:h-48 rounded-xl overflow-hidden mb-3 bg-black">
                         <iframe src="${v.url}" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <h3 class="font-bold text-slate-900 text-sm">${v.title}</h3>
+                    <h3 class="font-bold text-slate-900 text-xs sm:text-sm">${v.title}</h3>
                 `;
                 grid.appendChild(div);
             });
@@ -790,7 +832,7 @@
             thumbContainer.innerHTML = '';
             p.images.forEach((imgUrl) => {
                 const thumb = document.createElement('div');
-                thumb.className = 'h-16 rounded-xl overflow-hidden border-2 border-slate-200 hover:border-gold cursor-pointer transition';
+                thumb.className = 'h-14 sm:h-16 rounded-xl overflow-hidden border-2 border-slate-200 hover:border-gold cursor-pointer transition';
                 thumb.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
                 thumb.onclick = () => {
                     document.getElementById('detail-main-img').src = imgUrl;
@@ -808,7 +850,7 @@
                     sublist.appendChild(li);
                 });
             } else {
-                sublist.innerHTML = `<li class="text-slate-500 text-sm">Chính hãng chất lượng cao, lắp đặt trọn gói.</li>`;
+                sublist.innerHTML = `<li class="text-slate-500 text-xs sm:text-sm">Chính hãng chất lượng cao, lắp đặt trọn gói.</li>`;
             }
 
             document.getElementById('home-view').classList.add('hidden');
@@ -847,19 +889,19 @@
             const container = document.getElementById('cart-items-container');
             container.innerHTML = '';
             if(cart.length === 0) {
-                container.innerHTML = `<p class="text-slate-500 text-center py-4">Giỏ hàng của bạn đang trống.</p>`;
+                container.innerHTML = `<p class="text-slate-500 text-center py-4 text-sm">Giỏ hàng của bạn đang trống.</p>`;
             } else {
                 cart.forEach((item, index) => {
                     container.innerHTML += `
-                        <div class="flex justify-between items-center py-2">
-                            <div class="flex items-center gap-3">
-                                <img src="${item.images[0]}" class="w-12 h-12 rounded-lg object-cover">
+                        <div class="flex justify-between items-center py-2 gap-2">
+                            <div class="flex items-center gap-2.5">
+                                <img src="${item.images[0]}" class="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-cover flex-shrink-0">
                                 <div>
-                                    <h5 class="font-bold text-sm text-slate-900">${item.title}</h5>
-                                    <span class="text-gold text-xs font-bold">${item.price}</span>
+                                    <h5 class="font-bold text-xs sm:text-sm text-slate-900 line-clamp-1">${item.title}</h5>
+                                    <span class="text-gold text-[11px] sm:text-xs font-bold">${item.price}</span>
                                 </div>
                             </div>
-                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm"><i class="fas fa-trash"></i></button>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-sm p-1"><i class="fas fa-trash"></i></button>
                         </div>
                     `;
                 });
@@ -949,19 +991,19 @@
             catTab.classList.add('hidden');
             prodTab.classList.add('hidden');
             ordTab.classList.add('hidden');
-            catBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
-            prodBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
-            ordBtn.className = "px-3 py-2 rounded-lg text-slate-300 font-bold text-xs hover:text-white transition";
+            catBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg text-slate-300 font-bold text-[11px] sm:text-xs hover:text-white transition";
+            prodBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg text-slate-300 font-bold text-[11px] sm:text-xs hover:text-white transition";
+            ordBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg text-slate-300 font-bold text-[11px] sm:text-xs hover:text-white transition";
 
             if(tabName === 'categories') {
                 catTab.classList.remove('hidden');
-                catBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+                catBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-[11px] sm:text-xs transition";
             } else if(tabName === 'products') {
                 prodTab.classList.remove('hidden');
-                prodBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+                prodBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-[11px] sm:text-xs transition";
             } else {
                 ordTab.classList.remove('hidden');
-                ordBtn.className = "px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-xs transition";
+                ordBtn.className = "flex-1 sm:flex-initial px-2.5 sm:px-3 py-2 rounded-lg bg-gold text-slate-950 font-bold text-[11px] sm:text-xs transition";
             }
         }
 
@@ -970,13 +1012,13 @@
             listContainer.innerHTML = '';
             categories.forEach((cat, index) => {
                 listContainer.innerHTML += `
-                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-700 flex justify-between items-center gap-3">
-                        <div class="flex items-center gap-2">
+                    <div class="bg-slate-900 p-3 rounded-xl border border-slate-700 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2.5">
+                        <div class="flex items-center gap-2 w-full sm:w-auto">
                             <span class="text-xs text-slate-400 font-bold">#${index+1}</span>
-                            <input type="text" id="cat-name-${cat.id}" value="${cat.name}" class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-white text-sm" onchange="updateCategoryName('${cat.id}', this.value)">
-                            <span class="text-xs text-slate-500 font-mono">(ID: ${cat.id})</span>
+                            <input type="text" id="cat-name-${cat.id}" value="${cat.name}" class="flex-1 sm:flex-initial px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-white text-xs sm:text-sm" onchange="updateCategoryName('${cat.id}', this.value)">
+                            <span class="text-[11px] text-slate-500 font-mono hidden sm:inline">(ID: ${cat.id})</span>
                         </div>
-                        <div class="flex items-center gap-1">
+                        <div class="flex items-center gap-1 self-end sm:self-auto">
                             <button onclick="moveCategory(${index}, -1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs" title="Di chuyển lên"><i class="fas fa-arrow-up"></i></button>
                             <button onclick="moveCategory(${index}, 1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 flex items-center justify-center text-xs" title="Di chuyển xuống"><i class="fas fa-arrow-down"></i></button>
                             <button onclick="deleteCategory('${cat.id}')" class="w-8 h-8 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white flex items-center justify-center text-xs transition" title="Xóa danh mục"><i class="fas fa-trash"></i></button>
@@ -1082,10 +1124,10 @@
                     let imgVal = p.images[i] || '';
                     imgInputsHTML += `
                         <div class="space-y-1">
-                            <label class="text-xs text-slate-400">Ảnh ${i+1}:</label>
+                            <label class="text-[11px] text-slate-400">Ảnh ${i+1}:</label>
                             <div class="flex gap-2 items-center">
-                                <input type="text" id="admin-img${i+1}-${p.id}" value="${imgVal}" class="flex-1 px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs" placeholder="Link ảnh hoặc chọn file">
-                                <label class="px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold rounded-lg cursor-pointer whitespace-nowrap">
+                                <input type="text" id="admin-img${i+1}-${p.id}" value="${imgVal}" class="flex-1 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs" placeholder="Link ảnh hoặc chọn file">
+                                <label class="px-2.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold rounded-lg cursor-pointer whitespace-nowrap">
                                     <i class="fas fa-upload mr-1"></i> Chọn file
                                     <input type="file" accept="image/*" class="hidden" onchange="handleFileSelect(event, 'admin-img${i+1}-${p.id}')">
                                 </label>
@@ -1101,32 +1143,30 @@
                 });
 
                 container.innerHTML += `
-                    <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 space-y-4">
+                    <div class="bg-slate-800 p-4 sm:p-5 rounded-2xl border border-slate-700 space-y-3.5">
                         <div class="flex justify-between items-center border-b border-slate-700 pb-2">
-                            <h5 class="font-bold text-gold text-sm">Sản phẩm #${index + 1}: ${p.title}</h5>
-                            <button onclick="deleteProduct(${p.id})" class="text-red-400 hover:text-red-300 text-xs"><i class="fas fa-trash"></i> Xóa SP</button>
+                            <h5 class="font-bold text-gold text-xs sm:text-sm">Sản phẩm #${index + 1}: ${p.title}</h5>
+                            <button onclick="deleteProduct(${p.id})" class="text-red-400 hover:text-red-300 text-xs"><i class="fas fa-trash"></i> Xóa</button>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                             <div class="sm:col-span-2">
-                                <label class="text-xs text-slate-400 block mb-1">Tên sản phẩm:</label>
-                                <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                                <label class="text-[11px] text-slate-400 block mb-1">Tên sản phẩm:</label>
+                                <input type="text" id="admin-title-${p.id}" value="${p.title}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm">
                             </div>
                             <div>
-                                <label class="text-xs text-slate-400 block mb-1">Danh mục:</label>
-                                <select id="admin-cat-${p.id}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">${catOptionsHTML}</select>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="text-xs text-slate-400 block mb-1">Giá:</label>
-                                <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                                <label class="text-[11px] text-slate-400 block mb-1">Danh mục:</label>
+                                <select id="admin-cat-${p.id}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm">${catOptionsHTML}</select>
                             </div>
                         </div>
                         <div>
-                            <label class="text-xs text-slate-400 block mb-1">Mô tả chi tiết:</label>
-                            <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">${p.desc}</textarea>
+                            <label class="text-[11px] text-slate-400 block mb-1">Giá:</label>
+                            <input type="text" id="admin-price-${p.id}" value="${p.price}" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm">
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-700">
+                        <div>
+                            <label class="text-[11px] text-slate-400 block mb-1">Mô tả chi tiết:</label>
+                            <textarea id="admin-desc-${p.id}" rows="2" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-xs sm:text-sm">${p.desc}</textarea>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 border-t border-slate-700">
                             ${imgInputsHTML}
                         </div>
                     </div>
@@ -1148,33 +1188,33 @@
             container.innerHTML = '';
             
             if(orders.length === 0) {
-                container.innerHTML = `<div class="text-center py-10 text-slate-400">Chưa có đơn hàng nào được đặt.</div>`;
+                container.innerHTML = `<div class="text-center py-10 text-slate-400 text-xs sm:text-sm">Chưa có đơn hàng nào được đặt.</div>`;
                 return;
             }
 
             orders.forEach((ord, index) => {
                 let itemsList = '';
                 ord.items.forEach(item => {
-                    itemsList += `<li class="text-xs text-slate-300">- ${item.title} (${item.price})</li>`;
+                    itemsList += `<li class="text-[11px] sm:text-xs text-slate-300">- ${item.title} (${item.price})</li>`;
                 });
 
                 container.innerHTML += `
-                    <div class="bg-slate-800 p-5 rounded-2xl border border-slate-700 space-y-3">
+                    <div class="bg-slate-800 p-4 sm:p-5 rounded-2xl border border-slate-700 space-y-3">
                         <div class="flex justify-between items-center border-b border-slate-700 pb-2">
-                            <span class="font-bold text-gold text-sm"><i class="fas fa-receipt mr-1"></i> Mã đơn: ${ord.id}</span>
-                            <span class="text-xs text-slate-400">${ord.time}</span>
+                            <span class="font-bold text-gold text-xs sm:text-sm"><i class="fas fa-receipt mr-1"></i> Mã đơn: ${ord.id}</span>
+                            <span class="text-[11px] text-slate-400">${ord.time}</span>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-sm">
-                            <div><strong class="text-slate-400 text-xs block">Khách hàng:</strong> <span class="text-white">${ord.name}</span></div>
-                            <div><strong class="text-slate-400 text-xs block">Số điện thoại:</strong> <a href="tel:${ord.phone}" class="text-gold font-bold">${ord.phone}</a></div>
-                            <div><strong class="text-slate-400 text-xs block">Địa chỉ lắp đặt:</strong> <span class="text-white">${ord.address}</span></div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs sm:text-sm">
+                            <div><strong class="text-slate-400 text-[11px] block">Khách hàng:</strong> <span class="text-white">${ord.name}</span></div>
+                            <div><strong class="text-slate-400 text-[11px] block">Số điện thoại:</strong> <a href="tel:${ord.phone}" class="text-gold font-bold">${ord.phone}</a></div>
+                            <div><strong class="text-slate-400 text-[11px] block">Địa chỉ lắp đặt:</strong> <span class="text-white">${ord.address}</span></div>
                         </div>
                         <div class="bg-slate-900 p-3 rounded-xl border border-slate-700">
-                            <strong class="text-xs text-slate-400 block mb-1">Sản phẩm đặt lịch:</strong>
+                            <strong class="text-[11px] text-slate-400 block mb-1">Sản phẩm đặt lịch:</strong>
                             <ul class="space-y-1">${itemsList}</ul>
                         </div>
                         <div class="flex justify-end pt-2">
-                            <button onclick="deleteOrder(${index})" class="px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition flex items-center gap-1.5">
+                            <button onclick="deleteOrder(${index})" class="px-3.5 py-2 rounded-lg bg-red-600 hover:bg-red-700 text-white text-[11px] sm:text-xs font-bold transition flex items-center gap-1.5">
                                 <i class="fas fa-trash"></i> Xóa đơn hàng
                             </button>
                         </div>
@@ -1241,17 +1281,18 @@
         };
     </script>
 
-    <!-- Tawk.to Live Chat Script Integration -->
+    <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6aedd2c6655baa3c3ea935ad/1k6ofum8p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
+    <!--End of Tawk.to Script-->
 </body>
 </html>
