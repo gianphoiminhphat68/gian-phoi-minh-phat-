@@ -58,8 +58,8 @@
                 <a href="#products" onclick="showHome()" class="hover:text-gold transition">Sản Phẩm</a>
                 <a href="#videos" onclick="showHome()" class="hover:text-gold transition">Video Thực Tế</a>
                 <a href="#pricing" onclick="showHome()" class="hover:text-gold transition">Bảng Giá</a>
-                <button onclick="openAdminModal()" class="px-4 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition flex items-center gap-2 text-sm shadow">
-                    <i class="fas fa-cog"></i> Quản Lý (Admin)
+                <button onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition flex items-center gap-2 text-sm shadow">
+                    <i class="fas fa-lock"></i> Quản Lý (Admin)
                 </button>
             </nav>
 
@@ -71,11 +71,9 @@
         </div>
     </header>
 
-    <!-- Main Container: Chuyển đổi giữa Trang Chủ và Trang Chi Tiết Sản Phẩm -->
+    <!-- Main Container -->
     <main id="main-content">
-        <!-- Vùng hiển thị Trang Chủ -->
         <div id="home-view">
-            <!-- Hero Banner -->
             <section class="bg-gradient-to-b from-slate-900 via-primary to-slate-900 text-white py-20 px-4 text-center">
                 <div class="max-w-4xl mx-auto space-y-6">
                     <span class="px-4 py-1.5 rounded-full bg-gold/20 text-gold text-xs font-semibold border border-gold/40">CỬA HÀNG TRỰC TUYẾN MINH PHÁT</span>
@@ -83,7 +81,7 @@
                     <p class="text-slate-300 text-base sm:text-lg">Chuyên phân phối và lắp đặt giàn phơi thông minh, lưới an toàn, cửa chống muỗi, cửa xếp và bạt che cao cấp.</p>
                     <div class="flex flex-wrap justify-center gap-4 pt-4">
                         <a href="#products" class="px-8 py-4 rounded-xl bg-gold text-slate-950 font-bold shadow-lg hover:bg-gold-light transition">Xem Danh Mục Sản Phẩm</a>
-                        <button onclick="openAdminModal()" class="px-8 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition">Quản Lý & Đăng Sản Phẩm</button>
+                        <button onclick="openLoginModal()" class="px-8 py-4 rounded-xl bg-white/10 border border-gold/50 text-white font-semibold hover:bg-white/20 transition">Đăng Nhập Quản Trị</button>
                     </div>
                 </div>
             </section>
@@ -93,11 +91,9 @@
                 <div class="text-center mb-12">
                     <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Danh Mục Sản Phẩm</span>
                     <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mt-3">Tất Cả Sản Phẩm & Dịch Vụ</h2>
-                    <p class="text-slate-600 mt-2">Bấm vào sản phẩm để xem thông số kỹ thuật chi tiết, giá tiền và đặt hàng.</p>
+                    <p class="text-slate-600 mt-2">Bấm vào sản phẩm để xem thông số kỹ thuật chi tiết, phân loại mẫu mã và đặt hàng.</p>
                 </div>
-                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Render tự động qua JS -->
-                </div>
+                <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             </section>
 
             <!-- Video Section -->
@@ -107,9 +103,7 @@
                         <span class="text-gold font-semibold uppercase text-sm bg-gold/10 px-3 py-1 rounded-full border border-gold/30">Video Thực Tế</span>
                         <h2 class="text-3xl font-extrabold text-primary mt-3">Video Lắp Đặt & Thi Công</h2>
                     </div>
-                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Render tự động qua JS -->
-                    </div>
+                    <div id="video-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
                 </div>
             </section>
 
@@ -142,7 +136,7 @@
                             <div>
                                 <h3 class="text-2xl font-bold text-slate-900 mb-2">Gói Toàn Diện</h3>
                                 <div class="text-3xl font-black text-gold my-4">Giá xưởng tốt nhất</div>
-                                <p class="text-slate-600 text-sm mb-6">Bạt che nắng mưa, cửa xếp nhôm nhựa vách ngăn điều hòa đo đạc tận nơi.</p>
+                                <p class="text-slate-600 text-sm mb-6">Vách ngăn rèm tổ ong, lưới an toàn & cửa chống muỗi đo đạc tận nơi.</p>
                             </div>
                             <a href="tel:0967220838" class="py-3 bg-primary text-white font-bold rounded-xl text-center hover:bg-slate-900 transition">Tư Vấn Ngay</a>
                         </div>
@@ -151,19 +145,17 @@
             </section>
         </div>
 
-        <!-- Vùng hiển thị Trang Chi Tiết Sản Phẩm (Giống các trang E-commerce chuyên nghiệp) -->
+        <!-- Trang Chi Tiết Sản Phẩm -->
         <div id="detail-view" class="hidden py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <button onclick="showHome()" class="mb-8 px-5 py-2.5 rounded-xl bg-slate-200 text-slate-800 font-semibold hover:bg-slate-300 transition flex items-center gap-2 w-max">
                 <i class="fas fa-arrow-left"></i> Quay lại danh mục sản phẩm
             </button>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white p-8 rounded-3xl shadow-xl border border-slate-200">
-                <!-- Hình ảnh sản phẩm lớn -->
                 <div class="rounded-2xl overflow-hidden bg-slate-100 h-96 border border-slate-200 flex items-center justify-center">
                     <img id="detail-img" src="" alt="Sản phẩm Minh Phát" class="w-full h-full object-cover">
                 </div>
 
-                <!-- Thông tin chi tiết sản phẩm -->
                 <div class="space-y-6 flex flex-col justify-between">
                     <div>
                         <span class="px-3 py-1 bg-gold/10 text-gold text-xs font-bold uppercase rounded-full border border-gold/30">Sản Phẩm Chính Hãng Minh Phát</span>
@@ -172,15 +164,11 @@
                         <p id="detail-desc" class="text-slate-600 text-base leading-relaxed">Mô tả chi tiết sản phẩm...</p>
                     </div>
 
-                    <!-- Thông số kỹ thuật / Thư mục con -->
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
                         <h4 class="font-bold text-slate-900 text-sm mb-3"><i class="fas fa-list-ul text-gold mr-2"></i>Phân Loại & Mẫu Mã Chi Tiết:</h4>
-                        <ul id="detail-sublist" class="space-y-2 text-sm text-slate-700">
-                            <!-- Render qua JS -->
-                        </ul>
+                        <ul id="detail-sublist" class="space-y-2 text-sm text-slate-700"></ul>
                     </div>
 
-                    <!-- Nút đặt hàng / liên hệ nhanh -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 border-t border-slate-100">
                         <a href="tel:0967220838" class="flex-1 py-4 rounded-xl bg-gold text-slate-950 font-bold text-center shadow-lg hover:bg-gold-light transition flex items-center justify-center gap-2 text-base">
                             <i class="fas fa-phone-alt"></i> Gọi Đặt Hàng: 0967.220.838
@@ -194,7 +182,38 @@
         </div>
     </main>
 
-    <!-- Modal Quản Lý (Admin) -->
+    <!-- Modal Đăng Nhập Admin -->
+    <div id="login-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 text-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-gold">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-gold/20 text-gold rounded-2xl flex items-center justify-center text-2xl mx-auto mb-3 border border-gold/40">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Đăng Nhập Quản Trị</h3>
+                <p class="text-slate-400 text-xs mt-1">Vui lòng nhập tài khoản admin để tiếp tục</p>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Tên Đăng Nhập</label>
+                    <input type="text" id="admin-user" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Nhập tài khoản">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase text-slate-300 mb-1">Mật Khẩu</label>
+                    <input type="password" id="admin-pass" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-gold" placeholder="Nhập mật khẩu">
+                </div>
+                <div id="login-error" class="text-red-400 text-xs hidden">Tên đăng nhập hoặc mật khẩu không chính xác!</div>
+                <button onclick="checkLogin()" class="w-full py-3.5 rounded-xl bg-gold text-slate-950 font-bold hover:bg-gold-light transition shadow text-base">
+                    Đăng Nhập
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Quản Lý (Admin Dashboard) -->
     <div id="admin-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-slate-900 text-white rounded-3xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl border border-gold my-8">
             <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-lg transition">
@@ -232,63 +251,74 @@
         <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
     </footer>
 
-    <!-- JavaScript Xử Lý Toàn Bộ Hệ Thống E-commerce -->
+    <!-- JavaScript Xử Lý Danh Mục Mới -->
     <script>
+        const ADMIN_USER = "admin";
+        const ADMIN_PASS = "MinhPhat372313";
+
         let defaultProducts = [
             {
                 id: 1,
-                title: "1. Giàn Phơi Thông Minh Điện Tử Cao Cấp",
+                title: "1. Giàn Phơi Thông Minh Điện Tử (5 Mẫu)",
                 price: "Liên hệ giá tốt nhất",
-                desc: "Điều khiển từ xa thông minh qua remote, tích hợp đèn UV diệt khuẩn, quạt sấy khô quần áo nhanh chóng vào mùa mưa và cảm biến tự dừng an toàn khi gặp vật cản.",
-                subFolders: ["Mẫu Điện Tử Điều Khển Từ Xa 1 Thanh", "Mẫu Điện Tử Cao Cấp Đèn UV & Sấy Khô", "Mẫu Gắn Trân Chống Rơi Tuyệt Đối"],
+                desc: "Hệ thống giàn phơi điện tử cao cấp tích hợp điều khiển từ xa, đèn UV diệt khuẩn, quạt sấy khô và cảm biến tự dừng an toàn.",
+                subFolders: ["Mẫu Điện Tử Điều Khiển Từ Xa 1 Thanh", "Mẫu Điện Tử 2 Thanh Nâng Hạ Độc Lập", "Mẫu Điện Tử Tích Hợp Đèn UV Sấy Khô", "Mẫu Điện Tử Cảm Biến Chống Rơi", "Mẫu Điện Tử Nhôm Đúc Nguyên Khối"],
                 image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
             },
             {
                 id: 2,
-                title: "2. Giàn Phơi Quay Tay Gắn Trần",
-                price: "Từ 650.000đ - 1.500.000đ",
-                desc: "Cơ cấu quay hãm vòng bi tự động nhẹ nhàng, giúp nâng hạ thanh phơi dễ dàng đón nắng toàn diện. Chất liệu nhôm đúc hoặc inox 304 không gỉ bền bỉ theo thời gian.",
-                subFolders: ["Mẫu Quay Tay Inox 304 Không Gỉ", "Mẫu Hợp Kim Nhôm Bạc Sáng Bóng", "Mẫu Hợp Kim Sơn Vàng Đồng Sang Trọng"],
+                title: "2. Giàn Phơi Quay Tay Gắn Trần (13 Mẫu)",
+                price: "Từ 650.000đ - 1.600.000đ",
+                desc: "Đa dạng 13 mẫu giàn phơi quay tay gắn trần sử dụng trục quay hãm vòng bi tự động nhẹ nhàng, bền bỉ.",
+                subFolders: ["Mẫu Quay Tay Inox 304 Hoàn Hảo", "Mẫu Nhôm Sáng Bạc Tiêu Chuẩn", "Mẫu Sơn Vàng Đồng Cao Cấp", "Mẫu Thanh Phơi Đục Lỗ Sẵn 80 Lỗ", "Mẫu Quay Tay Đĩa Tròn CNC", "Mẫu Hộp Quay Liền Trục Cao Cấp", "Mẫu Nhôm Hàng Phổ Thông", "Mẫu Quay Tay Tải Trọng 60kg", "Mẫu Nhôm Dày Chống Gỉ", "Mẫu Thanh Phơi Gỗ Khắc CNC", "Mẫu Gắn Trần Ban Công Chung Cư", "Mẫu Quay Tay Kép Chuyên Dụng", "Mẫu Đặc Biệt Minh Phát"],
                 image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
             },
             {
                 id: 3,
-                title: "3. Giàn Phơi Xếp Ngang Gắn Tường",
+                title: "3. Giàn Phơi Xếp Ngang (6 Mẫu)",
                 price: "Từ 850.000đ / bộ",
-                desc: "Thiết kế gắn tường kéo ra khi phơi và xếp gọn sát tường khi không dùng. Phù hợp cho khu vực ban công hẹp hoặc không có trần.",
-                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm", "Mẫu Xếp Gắn Tường Inox Kéo Giãn"],
+                desc: "Giải pháp phơi đồ gắn tường kéo ra xếp gọn thông minh với 6 mẫu mã phù hợp mọi không gian hẹp.",
+                subFolders: ["Mẫu Xếp Ngang 3 Thanh Nhôm Tải Lớn", "Mẫu Xếp Gắn Tường Inox Kéo Giãn", "Mẫu Xếp Ngang Gắn Tường Nhôm Bạc", "Mẫu Xếp Ngang Sơn Tĩnh Điện Vàng Đồng", "Mẫu Xếp Ngang Gấp Gọn 2 Thanh", "Mẫu Xếp Ngang Ban Công Nhỏ"],
                 image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
             },
             {
                 id: 4,
-                title: "4. Lưới An Toàn Ban Công / Cửa Sổ",
-                desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở nhà cao tầng. Tầm nhìn thoáng, không che khuất cảnh quan, cáp inox 304 bọc nhựa bền bỉ.",
-                price: "Theo diện tích thực tế",
-                subFolders: ["Lưới An Toàn Cáp Inox 2.5mm", "Lưới An Toàn Cáp Inox 3.0mm Bọc Nhựa Trong Suốt"],
-                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                id: 5,
-                title: "5. Cửa Chống Muỗi (Xếp Lùa & Tự Cuốn)",
+                title: "4. Cửa Lưới Chống Muỗi (3 Hệ Chính)",
                 price: "Khảo sát đo đạc miễn phí",
-                desc: "Ngăn chặn hiệu quả muỗi, ruồi và côn trùng gây bệnh. Lưới sợi thủy tinh/inox cao cấp, khung nhôm sơn tĩnh điện bền đẹp.",
-                subFolders: ["Hệ Cửa Xếp Lùa Khung Nhôm Sơn Tĩnh Điện", "Hệ Cửa Tự Cuốn Lò Xo Tiện Lợi", "Hệ Cửa Lưới Cố Định"],
+                desc: "Hệ thống cửa chống muỗi ngăn côn trùng hiệu quả với các dòng hệ xếp, hệ lùa lưới inox 304, hệ tự cuốn và hệ FIX cố định lưới inox 304.",
+                subFolders: ["Cửa Chống Muỗi Hệ Xếp", "Cửa Chống Muỗi Hệ Lùa Lưới Inox 304", "Cửa Chống Muỗi Hệ Tự Cuốn", "Cửa Chống Muỗi Hệ FIX Cố Định Lưới Inox 304"],
                 image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
             },
             {
-                id: 6,
-                title: "6. Cửa Xếp Lá Nhôm, Lá Nhựa",
+                id: 5,
+                title: "5. Cửa Xếp Lá Nhôm / Lá Nhựa",
                 price: "Liên hệ xưởng",
-                desc: "Giải pháp vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa hiện đại, tiết kiệm diện tích tối ưu khi đóng mở.",
-                subFolders: ["Cửa Xếp Lá Nhôm Giả Gỗ Cao Cấp", "Cửa Xếp Lá Nhựa PVC Ngăn Lạnh Điều Hòa", "Vách Ngăn Tổ Ong"],
+                desc: "Cửa xếp lá nhôm và lá nhựa cao cấp dùng làm vách ngăn phòng, cửa nhà vệ sinh, ngăn lạnh điều hòa tiết kiệm diện tích.",
+                subFolders: ["Cửa Xếp Lá Nhôm Giả Gỗ & Lá Nhựa PVC Cao Cấp"],
                 image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
             },
             {
+                id: 6,
+                title: "6. Lưới An Toàn Ban Công Cửa Sổ",
+                price: "Theo diện tích thực tế",
+                desc: "Bảo vệ an toàn tuyệt đối cho trẻ nhỏ ở chung cư, nhà cao tầng. Cáp inox 304 lõi xoắn bọc nhựa trong suốt.",
+                subFolders: ["Lưới An Toàn Ban Công & Cửa Sổ Tiêu Chuẩn Minh Phát"],
+                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+            },
+            {
                 id: 7,
-                title: "7. Bạt Che Nắng Mưa / Mái Hiên / Bạt Xếp",
+                title: "7. Lưới An Toàn Cầu Thang",
+                price: "Khảo sát tận nơi",
+                desc: "Giải pháp bảo vệ an toàn dọc theo lối đi cầu thang bộ trong nhà phố, biệt thự, trường mầm non.",
+                subFolders: ["Lưới An Toàn Cầu Thang Thẩm Mỹ Cao"],
+                image: "https://images.unsplash.com/photo-1541888946425-d0fbb18f86f3?auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                id: 8,
+                title: "8. Vách Ngăn Rèm Tổ Ong",
                 price: "Báo giá theo m2",
-                desc: "Hệ thống bạt che chuyên dụng cho ban công, hiên nhà, quán café. Chất liệu bạt PVC dày dặn, chống tia UV và chống thấm tuyệt đối.",
-                subFolders: ["Bạt Che Nắng Mưa Tự Cuốn Lò Xo", "Mái Hiên Di Động Quay Tay", "Bạt Xếp Lượn Sóng Quán Café"],
+                desc: "Vách ngăn rèm tổ ong cách nhiệt, cản sáng, ngăn phòng và giữ nhiệt điều hòa cực tốt.",
+                subFolders: ["Vách Ngăn Rèm Tổ Ong Cao Cấp Nhập Khẩu"],
                 image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80"
             }
         ];
@@ -298,14 +328,14 @@
             { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_eco')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_eco')) || defaultVideos;
+        let products = JSON.parse(localStorage.getItem('minhphat_products_eco_v2')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_eco_v2')) || defaultVideos;
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
             products.forEach(p => {
-                const isSpan = p.id === 7 ? 'md:col-span-2 lg:col-span-3 bg-blue-50' : 'bg-white';
+                const isSpan = p.id === 8 ? 'md:col-span-2 lg:col-span-3 bg-blue-50' : 'bg-white';
                 const div = document.createElement('div');
                 div.className = `${isSpan} rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition border border-slate-200 flex flex-col justify-between p-6 cursor-pointer group`;
                 div.onclick = () => showDetail(p.id);
@@ -343,7 +373,6 @@
             });
         }
 
-        // Chuyển sang trang chi tiết sản phẩm
         function showDetail(id) {
             const p = products.find(item => item.id === id);
             if (!p) return;
@@ -370,6 +399,29 @@
             document.getElementById('detail-view').classList.add('hidden');
             document.getElementById('home-view').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openLoginModal() {
+            document.getElementById('admin-user').value = '';
+            document.getElementById('admin-pass').value = '';
+            document.getElementById('login-error').classList.add('hidden');
+            document.getElementById('login-modal').classList.remove('hidden');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function checkLogin() {
+            const user = document.getElementById('admin-user').value;
+            const pass = document.getElementById('admin-pass').value;
+
+            if (user === ADMIN_USER && pass === ADMIN_PASS) {
+                closeLoginModal();
+                openAdminModal();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
         }
 
         function openAdminModal() {
@@ -421,8 +473,8 @@
                 v.url = document.getElementById(`admin-vurl-${v.id}`).value;
             });
 
-            localStorage.setItem('minhphat_products_eco', JSON.stringify(products));
-            localStorage.setItem('minhphat_videos_eco', JSON.stringify(videos));
+            localStorage.setItem('minhphat_products_eco_v2', JSON.stringify(products));
+            localStorage.setItem('minhphat_videos_eco_v2', JSON.stringify(videos));
             renderProducts();
             renderVideos();
             closeAdminModal();
