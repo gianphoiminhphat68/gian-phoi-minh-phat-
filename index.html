@@ -303,19 +303,6 @@
         <p>&copy; 2026 Giàn Phơi Cửa Lưới Minh Phát. Hotline: 0967 220 838 - 0879 319 345</p>
     </footer>
 
-    <!-- Tawk.to Script (Tích hợp chat trực tuyến chính thức) -->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-
     <!-- JavaScript Xử Lý Toàn Bộ Tính Năng -->
     <script>
         const ADMIN_USER = "admin";
@@ -330,7 +317,7 @@
             slides[currentSlide].style.opacity = '1';
         }, 4000);
 
-        // Danh sách sản phẩm chính xác theo yêu cầu phân tách từng mục riêng lẻ
+        // Danh sách sản phẩm chính xác theo đúng yêu cầu phân tách
         let defaultProducts = [
             // --- 5 MỤC GIÀN PHƠI ĐIỆN TỬ ---
             {
@@ -634,9 +621,9 @@
             { id: 2, title: "Quy Trình Thi Công Lưới An Toàn & Cửa Chống Muỗi", url: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('minhphat_products_v7')) || defaultProducts;
-        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v7')) || defaultVideos;
-        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v7')) || [];
+        let products = JSON.parse(localStorage.getItem('minhphat_products_v8')) || defaultProducts;
+        let videos = JSON.parse(localStorage.getItem('minhphat_videos_v8')) || defaultVideos;
+        let cart = JSON.parse(localStorage.getItem('minhphat_cart_v8')) || [];
         let activeCategory = 'all';
         let currentDetailProduct = null;
 
@@ -765,7 +752,7 @@
         function addToCartFromDetail() {
             if(!currentDetailProduct) return;
             cart.push(currentDetailProduct);
-            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
             updateCartCount();
             showToast(`Đã thêm "${currentDetailProduct.title}" vào giỏ hàng!`);
         }
@@ -804,7 +791,7 @@
 
         function removeFromCart(index) {
             cart.splice(index, 1);
-            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
             updateCartCount();
             openCartModal();
         }
@@ -819,7 +806,7 @@
             }
             alert(`Cảm ơn ${name}! Đơn hàng đặt lắp đặt của bạn đã được gửi thành công. Chúng tôi sẽ gọi điện lại cho bạn qua số ${phone} ngay lập tức.`);
             cart = [];
-            localStorage.setItem('minhphat_cart_v7', JSON.stringify(cart));
+            localStorage.setItem('minhphat_cart_v8', JSON.stringify(cart));
             updateCartCount();
             closeCartModal();
         }
@@ -882,7 +869,7 @@
                     document.getElementById(`admin-img5-${p.id}`).value
                 ];
             });
-            localStorage.setItem('minhphat_products_v7', JSON.stringify(products));
+            localStorage.setItem('minhphat_products_v8', JSON.stringify(products));
             renderProducts();
             closeAdminModal();
             alert("Đã lưu thay đổi thành công!");
@@ -895,17 +882,18 @@
         };
     </script>
 
-    <!-- Tawk.to Live Chat Script Integration -->
+    <!-- Start of Tawk.to Script -->
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/65f6c8d78d261e1b5f6d89b3/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
+    <!-- End of Tawk.to Script -->
 </body>
 </html>
